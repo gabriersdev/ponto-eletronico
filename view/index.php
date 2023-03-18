@@ -1,88 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- 
-    <meta name="keywords" content="#">
-    <meta name="author" content="Gabriel Ribeiro">
-    <meta property="og:title" content="#">
-    <meta property="og:description" content="#">
-    <meta property="og:url" content="#">
-    <meta property="og:image" content="#">
-    <meta property="og:image:secure_url" content="#"> 
-    <meta property="og:image:type" content="image/png"> 
-    <meta property="og:image:width" content="400"> 
-    <meta property="og:image:height" content="300"> 
-  -->
-  
-  <!-- 
-    <meta http-equiv="Content-Security-Policy" 
-    content="default-src 'self' 'unsafe-inline'; 
-    style-src 'self' 'unsafe-inline'; 
-    style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' 'unsafe-inline'; 
-    font-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://cdn.jsdelivr.net/; 
-    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://code.jquery.com/ https://cdnjs.cloudflare.com/; 
-    frame-src 'self' 'unsafe-inline';
-    connect-src 'self' 'unsafe-inline';">   
-  -->
-  
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/frameworks/highlights-A11Y-dark.css">
-  
-  <link rel="shortcut icon" href="./assets/img/#" type="image/x-icon">
-  
-  <title>Document</title>
-  
-  <script src="./assets/js/frameworks/jquery.js" defer></script>
-  <script src="./assets/js/frameworks/bootstrap.js" defer></script>
-  <script src="./assets/js/frameworks/pooper.js" defer></script>
-  <script src="./assets/js/frameworks/simple-mask-money.js" defer></script>
-  <script src="./assets/js/frameworks/highlights.js" defer></script>
-  <script src="./assets/js/frameworks/sweet-alert.js" defer></script>
-  <script src="./assets/js/frameworks/jquery-mask.js" defer></script>
-  <script type="module" src="./assets/js/script.js" defer></script>
+  <?php require './padroes/head.php'; ?>
 </head>
 <body>
-  
-  <noscript>
-    <div class="box-no-script">         
-      <div class="texto-pagina-centralizado-alt">
-        <h2 class="titulo-texto-pagina-centralizado">
-          Este site não funciona com o 
-          <span class="destaque-pagina-centralizado">Javascript desabilitado</span>
-        </h2>
-        <br>
-        <p class="label-texto-pagina-centralizado">Muitos dos recursos usados funcionam através do Javascript e sem ele a navegabilidade e o próprio funcionamento do site são comprometidos</p>
-        <p class="label-texto-pagina-centralizado">Portanto, habilite o Javascript e navegue pelo site</p><br>
-        <button data-recarrega-pagina class="btn-principal-no-script" id="btn-redirecionar-inicio" name="btn-redirecionar-inicio">Recarregar</button>
-      </div>
-    </div>
-  </noscript>
-  
-  <header class="cabecalho">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container container-fluid">
-        <a class="navbar-brand bold" href="./index.html">Cartão de Ponto</a>
-        <button class="navbar-toggler box-desabilitado" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./ultimos-registros.html">Últimos registros</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./horarios.html">Horários</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+
+  <?php require './padroes/no-script.php'; ?>
+  <?php require './padroes/header.php'; ?>
 
   <main class="principal">
     <div class="container">
