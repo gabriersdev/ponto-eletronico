@@ -62,3 +62,8 @@ body{
   justify-content: space-between;
   align-items: center;
 }
+
+.ativo{
+  font-weight: 600 !important;
+  color: #0D6EFD !important;
+}

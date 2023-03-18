@@ -100,5 +100,10 @@
     </div>
   </main>
   
+  <script type="module" defer>
+    import { marcarPaginaNoCabecalho } from './assets/js/script.js'
+    marcarPaginaNoCabecalho('ultimos-registros');
+  </script>
+
 </body>
 </html>

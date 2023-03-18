@@ -125,5 +125,11 @@
         </div>
     </div>
   </main>
+  
+  <script type="module" defer>
+    import { marcarPaginaNoCabecalho } from './assets/js/script.js'
+    marcarPaginaNoCabecalho('horarios');
+  </script>
+
 </body>
 </html>
