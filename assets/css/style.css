@@ -8,10 +8,44 @@
 @import url(./cores.css);
 @import url(./variaveis.css);
 
+@import url(./elementos/principal.css);
+
 html{
   scroll-behavior: smooth;
 }
 
 body{
-  font-family: '', sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+.box-desabilitado{
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.card-header{
+  padding: 1.5rem 1rem;
+}
+
+.card-header h5:first-child{
+  font-weight: 700;
+}
+
+.contador-atraso::before{
+  display: inline-block;
+  content: "•";
+  margin-right: 0.25rem;
+}
+
+.list-group-title{
+  background-color: #EEE;
+  font-size: 1rem;
+}
+
+.contador-periodos{
+  background-color: #EEF;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
