@@ -91,7 +91,7 @@
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
           <h5 class="text-muted">Últimos registros</h5>
-          <a href="./ultimos-registros.html" type="button" class="btn btn-outline-secondary">Ver todos</a>
+          <a href="" data-link="ultimos-registros" type="button" class="btn btn-outline-secondary">Ver todos</a>
         </div>
         <div class="card-body">
           <table class="table table-hover">
@@ -183,7 +183,7 @@
             <h5 class="text-dark-emphasis">Horários</h5>
             <p>Os horários dos próximos dias</p>
           </div>
-          <a href="./horarios.html" type="button" class="btn btn-outline-secondary">Ver todos</a>
+          <a href="" data-link="horarios" type="button" class="btn btn-outline-secondary">Ver todos</a>
         </div>
         <div class="card-body">
           <table class="table table-bordered border-dark-subtle table-striped table-hover">

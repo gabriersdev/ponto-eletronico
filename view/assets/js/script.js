@@ -2,6 +2,31 @@
 
 import { isEmpty } from "./módulos/utilitarios.js";
 
+function atribuirLinks(){
+  const linkElementos = document.querySelectorAll('[data-link]');
+
+  linkElementos.forEach(link => {
+    switch(link.dataset.link.toLowerCase().trim()){
+      case 'ultimos-registros':
+        link.href = './ultimos-registros.php';
+      break;
+
+      case 'horarios':
+        link.href = './horarios.php';
+      break;
+
+      case 'inicio':
+        link.href = './index.php';
+      break;
+
+      case 'sair':
+        link.href = '#';
+      break;
+    }
+  })
+
+}
+
 (() => {
   hljs.highlightAll();
 
@@ -19,6 +44,7 @@ import { isEmpty } from "./módulos/utilitarios.js";
     })
   })
 
+  atribuirLinks();
 })();
 
 function marcarPaginaNoCabecalho(nome){
