@@ -109,7 +109,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sábado, 17/03/2023" disabled>
                   </div>
@@ -122,7 +122,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                   </div>
@@ -135,7 +135,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                   </div>
@@ -148,7 +148,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                   </div>
@@ -161,7 +161,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                   </div>

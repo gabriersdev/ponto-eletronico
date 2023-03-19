@@ -76,8 +76,6 @@ function verificarODia(){
 
   const dataCompleta = `${data.get('date')}/${zeroEsquerda(2, data.get('month') + 1)}/${data.get('year')}`;
 
-  console.log((moment('2023-03-18 13:00:00').diff(moment('2023-03-18 11:30:00'), 'hours', true)));
-
   // const agora = new Date();
   // console.log(agora.getHours())
   // console.log(agora.getMinutes())

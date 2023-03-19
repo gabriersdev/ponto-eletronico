@@ -12,7 +12,7 @@
     <div class="container">
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-          <h5 class="text-muted">Todos os registros</h5>
+          <h5 class="text-muted">Últimos registros</h5>
         </div>
         <div class="card-body">
           <table class="table table-hover">
@@ -30,7 +30,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sábado, 17/03/2023" disabled>
                   </div>
@@ -43,7 +43,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                   </div>
@@ -56,7 +56,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                   </div>
@@ -69,7 +69,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                   </div>
@@ -82,7 +82,7 @@
                 <td scope="row" colspan="2">
                   <div class="input-group">
                     <div class="input-group-text">
-                      <input class="form-check-input mt-0" type="checkbox" checked>
+                      <input class="form-check-input mt-0" type="checkbox" checked disabled>
                     </div>
                     <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                   </div>
