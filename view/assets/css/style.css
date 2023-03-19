@@ -82,3 +82,24 @@ body{
   z-index: -1;
   color: transparent;
 }
+
+button.btn-load{
+  width: 125px;
+}
+
+button span.spinner-border{
+  max-height: 1rem !important; 
+  max-width: 1rem !important; 
+  border-width: 0.15rem !important;
+  font-size: normal;
+}
+
+ul li a.selecionado::after{
+  content: "\F26C";
+  color: #0D6EFD;
+  margin-left: 0.5rem;
+  display: inline-block;
+  font-family: "bootstrap-icons";
+  font-size: inherit;
+  text-rendering: auto;
+}

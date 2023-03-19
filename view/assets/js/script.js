@@ -136,8 +136,61 @@ const converterParaMesBRL = (numero) => {
   return mes;
 }
 
+function escutaSelecaoDropdown(){
+  const dropdowns = document.querySelectorAll('.dropdown-menu');
 
+  if(!isEmpty(dropdowns)){
+    if(Array.isArray(dropdowns) || typeof dropdowns == 'object'){
+      dropdowns.forEach(dropdown => {
+        acao(dropdown);
+      })
+    }else{
+      acao(dropdowns[0]);
+    }
+  }
 
+  function acao(dropdown){
+    dropdown.addEventListener('click', (evento) => {
+      evento.preventDefault();
+      if(evento.target.tagName.toLowerCase() == 'a'){
+        desmarcarTodasOpcoesDropdown(dropdown);
+        marcarOpcaoSelecionada(evento.target);
+        acionarBusca(dropdown);
+      }
+    })
+  }
+
+  function acionarBusca(dropdown){
+    const botao = dropdown.parentElement.querySelector('[data-acao="btn-dropdown-toggle"]');
+    if(!isEmpty(botao)){
+      botao.classList.contains('dropdown-toggle') ? botao.classList.remove('dropdown-toggle') : ''
+      const width = botao.offsetWidth;
+      botao.innerHTML = `<span class="spinner-border text-light" role="status"></span>`;
+      botao.style.width = `${width}px`;
+    }
+  }
+
+  function marcarOpcaoSelecionada(opcao){
+    opcao.classList.add('selecionado');
+  }
+
+  function desmarcarTodasOpcoesDropdown(dropdown){
+    const opcoes = dropdown.querySelectorAll('a.dropdown-item');
+
+    if(!isEmpty(opcoes)){
+      if(Array.isArray(opcoes) || typeof opcoes == 'object'){
+        opcoes.forEach(opcao => {
+          opcao.classList.contains('selecionado') ? opcao.classList.remove('selecionado') : '';
+        })
+      }else{
+        opcoes[0].classList.contains('selecionado') ? opcoes[0].classList.remove('selecionado') : '';
+      }
+    }
+
+  }
+}
+
+escutaSelecaoDropdown();
 verificarODia();
 
 export{

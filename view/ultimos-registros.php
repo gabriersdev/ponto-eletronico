@@ -44,10 +44,30 @@
           </div><br>
 
           <div class="card">
-            <div class="card-header normal">
+            <div class="card-header normal d-flex justify-content-between align-items-center">
               Registros
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" data-acao="btn-dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Ordenação
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item selecionado" href="#">Mais recentes</a></li>
+                  <li><a class="dropdown-item" href="#">Mais antigos</a></li>
+                  <li><a class="dropdown-item" href="#">Últimos 30 dias</a></li>
+                </ul>
+              </div>
             </div>
             <div class="card-body">
+
+              <div class="alert alert-warning d-flex justify-content-between align-items-center" role="alert">
+                Não foram encontrados registros no período.
+                <button class="btn btn-outline-secondary">Recarregar</button>
+              </div>
+              
+              <!-- <button class="btn btn-outline-secondary btn-load">
+                <span class="spinner-border text-dark" role="status"></span>
+              </button> -->
+
               <table class="table table-hover">
                 <thead>
                   <tr>
