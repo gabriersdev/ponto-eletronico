@@ -41,4 +41,5 @@
   <script src="./assets/js/frameworks/highlights.js" defer></script>
   <script src="./assets/js/frameworks/sweet-alert.js" defer></script>
   <script src="./assets/js/frameworks/jquery-mask.js" defer></script>
+  <script src="./assets/js/frameworks/moment.js" defer></script>
   <script type="module" src="./assets/js/script.js" defer></script>
