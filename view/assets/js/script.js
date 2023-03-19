@@ -62,12 +62,28 @@ function marcarPaginaNoCabecalho(nome){
   }
 }
 
+function diferencaEmHoras(inicio, fim){
+  const ms = moment(inicio,"YYYY-MM-DD HH:mm:ss").diff(moment(fim,"YYYY-MM-DD HH:mm:ss"));
+  const duracao = moment.duration(ms);
+  return Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss");
+}
+
+// console.log(diferencaEmHoras('2023-03-19 15:12:00', '2023-03-19 15:08:00'))
+
 function verificarODia(){
   const data = moment()
   let diaSemanaExtenso = null;
 
   const dataCompleta = `${data.get('date')}/${zeroEsquerda(2, data.get('month') + 1)}/${data.get('year')}`;
-  console.log(converterParaMesBRL(data.get('month')))
+
+  console.log((moment('2023-03-18 13:00:00').diff(moment('2023-03-18 11:30:00'), 'hours', true)));
+
+  // const agora = new Date();
+  // console.log(agora.getHours())
+  // console.log(agora.getMinutes())
+  // console.log(agora.getSeconds())
+  
+  // console.log(Date.now() - new Date('2023-03-19 13:00:00').getTime())
 
   switch(data.day()){
     case '0':
@@ -121,6 +137,8 @@ const converterParaMesBRL = (numero) => {
 
   return mes;
 }
+
+
 
 verificarODia();
 
