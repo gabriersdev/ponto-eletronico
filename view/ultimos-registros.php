@@ -160,5 +160,7 @@
     marcarPaginaNoCabecalho('ultimos-registros');
   </script>
 
+  <?php include './padroes/footer.php' ?>
+
 </body>
 </html>

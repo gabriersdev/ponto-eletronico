@@ -131,5 +131,7 @@
     marcarPaginaNoCabecalho('horarios');
   </script>
 
+  <?php include './padroes/footer.php' ?>
+
 </body>
 </html>
