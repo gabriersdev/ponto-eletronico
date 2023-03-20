@@ -22,6 +22,10 @@ function atribuirLinks(){
       case 'sair':
       link.href = '#';
       break;
+
+      case 'github-dev':
+      link.href = 'https://github.com/gabrieszin/';
+      break;
     }
   })
   

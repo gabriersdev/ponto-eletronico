@@ -246,5 +246,7 @@
     </div>
   </main>
   
+  <?php include './padroes/footer.php' ?>
+
 </body>
 </html>
