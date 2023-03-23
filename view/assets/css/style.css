@@ -9,6 +9,8 @@
 @import url(./variaveis.css);
 
 @import url(./elementos/principal.css);
+@import url(./elementos/feedback.css);
+@import url(./elementos/formulario-login.css);
 
 html{
   scroll-behavior: smooth;

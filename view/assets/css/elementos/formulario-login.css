@@ -1,0 +1,121 @@
+/* Style for icons (tag i) */
+.icon{
+  cursor: pointer;
+}
+
+/* Loader */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Loader 2 - credits: https://loading.io/css/ */
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #2631FF;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #2631FF transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Main content */
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form {
+  margin: 3.1rem auto;
+  font-size: 0.93rem;
+}
+
+.login-form form {
+  margin-bottom: 0.93rem;
+  border-radius: 0.62rem;
+  background: #E4E9F7;
+  padding: 1.87rem;
+}
+
+.login-form h2 {
+  margin: 0 0 0.93rem;
+  font-size: 1.17rem;
+}
+
+.login-form .form-group{
+  padding: 0.75rem 0;
+}
+
+.login-form label{
+  font-size: 1rem;
+}
+
+.form-control, .btn {
+  min-height: 2.37rem;
+  border-radius: 0.1rem;
+}
+
+.btn {        
+  font-size: 1rem;
+  width: 100%;
+}
+
+.text-center{
+  font-size: 1rem;
+  text-align: center;
+}
+
+#remember-password a,
+#sign-up a{
+  color: #FFF !important;
+}
