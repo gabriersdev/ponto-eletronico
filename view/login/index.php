@@ -13,7 +13,7 @@
       <section class="container">
         <div class="login-form">
           <form action="" method="post">
-              <h2 class="text-center">Login</h2>       
+            <h2 class="text-center">Login <span class="text-muted"><b>Ponto Eletrônico</b></span></h2>       
               <div class="form-group">
                 <label for="username">Usuário</label>
                 <input type="text" id="username" class="form-control" placeholder="Seu e-mail" required="required" autocomplete="off">
@@ -22,7 +22,7 @@
                 <label for="password">Senha</label>
                 <div class="input-group mb-3">
                   <input type="password" id="password" class="form-control" placeholder="Sua senha">
-                  <span class="input-group-text icon" id="basic-addon2"><i class="bi bi-eye-slash-fill" id="icon-view"></i></span>
+                  <button type="button" class="input-group-text icon" id="basic-addon2"><i class="bi bi-eye-slash-fill" id="icon-view"></i></button>
                 </div>
               </div>
               <div class="form-group">
@@ -37,6 +37,40 @@
         </div>
       </section>
     </main>
+
+    <script>
+
+      function acaoControleVisualizacaoSenha(){
+        const inputs = document.querySelectorAll('input[type=password]');
+
+        if(typeof inputs == 'object'){
+          inputs.forEach(input => {
+            acao(input);
+          })
+        }else{
+          acao(inputs[0]);
+        }
+
+        function acao(input){
+          const botao = input.parentElement.querySelector('button');
+          botao.addEventListener('click', () => {
+            const atributo = input.getAttribute('type');
+            if(atributo == 'password'){
+              input.type = 'text';
+              botao.querySelector('i').classList.value = 'bi bi-eye-fill';
+            }else if(atributo == 'text'){
+              botao.querySelector('i').classList.value = 'bi bi-eye-slash-fill';
+              input.type = 'password';
+            }
+
+            input.focus();
+          });
+        }
+      }
+
+      acaoControleVisualizacaoSenha();
+
+    </script>
 
   </body>
 </html>
