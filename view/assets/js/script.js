@@ -1,6 +1,6 @@
 "use strict";
 
-import { isEmpty, swalAlert, zeroEsquerda } from "./módulos/utilitarios.js";
+import { atualizarDatas, isEmpty, swalAlert, zeroEsquerda } from "./módulos/utilitarios.js";
 
 function atribuirLinks(){
   const linkElementos = document.querySelectorAll('[data-link]');
@@ -214,6 +214,7 @@ function escutaClickLinkSair(){
 }
 
 escutaClickLinkSair();
+atualizarDatas();
 
 export{
   marcarPaginaNoCabecalho

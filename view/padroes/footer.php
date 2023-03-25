@@ -4,7 +4,7 @@
       <div class="col-12 col-md">
         <small class="d-block text-muted">Desenvolvido por</small>
         <a href="" data-link="github-dev"><h5 class="bold">Gabriel Ribeiro</h5></a><br>
-        <small class="d-block text-muted">&copy; 2023</small>
+        <small class="d-block text-muted">&copy; <span data-ano-atual=''>2023</span></small>
         <small class="d-block mb-3 text-muted">Todos os direitos reservados.</small>
       </div>
       <div class="col-6 col-md">
