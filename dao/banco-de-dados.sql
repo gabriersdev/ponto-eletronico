@@ -18,7 +18,7 @@ CREATE SCHEMA IF NOT EXISTS `ponto_eletronico` DEFAULT CHARACTER SET utf8 ;
 -- -----------------------------------------------------
 -- Schema ponto_eletronico
 -- -----------------------------------------------------
-USE `ponto_eletronico` ;
+USE `ponto_eletronico`;
 
 -- -----------------------------------------------------
 -- Table `ponto_eletronico`.`usuarios`
