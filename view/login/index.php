@@ -65,7 +65,7 @@
               input.type = 'password';
             }
 
-            input.focus();
+            // input.focus();
           });
         }
       }
