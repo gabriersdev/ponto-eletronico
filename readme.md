@@ -10,4 +10,4 @@
 - Contabilizar o tempo decorrido e o tempo restante para o horário de almoço
 - Mostrar as informações dos últimos registros
 - Filtrar os últimos registros por data
-- Mostrar os horários de trabalho e almoço acordo com o usuário
+- Mostrar os horários de trabalho e almoço de acordo com o usuário
