@@ -8,15 +8,15 @@ function atribuirLinks(){
   linkElementos.forEach(link => {
     switch(link.dataset.link.toLowerCase().trim()){
       case 'ultimos-registros':
-      link.href = './ultimos-registros.php';
+      link.href = '../ultimos-registros';
       break;
       
       case 'horarios':
-      link.href = './horarios.php';
+      link.href = '../horarios';
       break;
       
       case 'inicio':
-      link.href = './index.php';
+      link.href = '../inicio/';
       break;
       
       case 'sair':

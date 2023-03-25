@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <?php require './padroes/head.php'; ?>
+  <?php require '../padroes/head.php'; ?>
 </head>
 <body>
 
-  <?php require './padroes/no-script.php'; ?>
-  <?php require './padroes/header.php'; ?>
+  <?php require '../padroes/no-script.php'; ?>
+  <?php require '../padroes/header.php'; ?>
 
   <main class="principal">
     <div class="container">
@@ -156,11 +156,11 @@
   </main>
   
   <script type="module" defer>
-    import { marcarPaginaNoCabecalho } from './assets/js/script.js'
+    import { marcarPaginaNoCabecalho } from '../assets/js/script.js'
     marcarPaginaNoCabecalho('ultimos-registros');
   </script>
 
-  <?php include './padroes/footer.php' ?>
+  <?php include '../padroes/footer.php' ?>
 
 </body>
 </html>
