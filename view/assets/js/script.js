@@ -1,6 +1,6 @@
 "use strict";
 
-import { isEmpty, zeroEsquerda } from "./módulos/utilitarios.js";
+import { isEmpty, swalAlert, zeroEsquerda } from "./módulos/utilitarios.js";
 
 function atribuirLinks(){
   const linkElementos = document.querySelectorAll('[data-link]');
@@ -196,6 +196,20 @@ function escutaSelecaoDropdown(){
 
 escutaSelecaoDropdown();
 verificarODia();
+
+function escutaClickLinkSair(){
+  const link = document.querySelector('[data-link="sair"]');
+  if(!isEmpty(link)){
+    link.addEventListener('click', (evento) => {
+      evento.preventDefault();
+      swalAlert('confirmacao', 'question', 'Tem certeza que deseja sair?', 'A sua sessão será encerrada, e um novo login terá de ser feito para acessar o Ponto Eletrônico', 'a').then(retorno => {
+        console.log(retorno)
+      });
+    })
+  }
+}
+
+escutaClickLinkSair();
 
 export{
   marcarPaginaNoCabecalho

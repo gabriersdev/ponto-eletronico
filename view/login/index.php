@@ -38,6 +38,8 @@
       </section>
     </main>
 
+    <?php include '../padroes/footer.php' ?>
+
     <script>
 
       function acaoControleVisualizacaoSenha(){

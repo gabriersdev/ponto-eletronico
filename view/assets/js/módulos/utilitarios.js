@@ -70,11 +70,53 @@ function zeroEsquerda(quantidadeZeros, valor){
   return (zeros + valor).slice(-quantidadeZeros);
 }
 
+async function swalAlert(tipo, icon, title, text, mensagem){
+  tipo = tipo.toLowerCase().trim();
+  if(tipo == 'confirmacao'){
+    await Swal.fire({
+      icon: icon,
+      title: title,
+      text: text,
+      showCancelButton: true,
+      confirmButtonText: 'Sair',
+      focusCancel: true
+    }).then((result) => {
+      if(result.isConfirmed) {
+        return true;
+      }else{
+        return false;
+      }
+    })
+  }
+
+  else if(tipo == 'aviso'){
+    Swal.fire({
+      icon: icon,
+      title: title,
+      text: text
+    })
+  }
+
+  else if(tipo == 'error'){
+    Swal.fire({
+      icon: icon,
+      title: title,
+      text: text,
+      footer: mensagem
+    }) 
+  }
+
+  async function confirmacao(icon, title, text){
+
+  }
+}
+
 export{
   isEmpty,
   capitalize,
   atualizarDatas,
   controleFechamentoModal,
   sanitizarString,
-  zeroEsquerda
+  zeroEsquerda,
+  swalAlert
 }
