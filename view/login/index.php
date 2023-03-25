@@ -10,10 +10,10 @@
     </div> -->
 
     <main>
-      <section class="container">
+      <section class="container login">
         <div class="login-form">
           <form action="" method="post">
-            <h2 class="text-center">Login <span class="text-muted"><b>Ponto Eletrônico</b></span></h2>       
+            <h2 class="text-center">Login&nbsp;<span class="text-muted"><b>Ponto Eletrônico</b></span></h2>       
               <div class="form-group">
                 <label for="username">Usuário</label>
                 <input type="text" id="username" class="form-control" placeholder="Seu e-mail" required="required" autocomplete="off">

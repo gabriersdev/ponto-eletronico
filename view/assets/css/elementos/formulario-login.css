@@ -66,7 +66,7 @@ body{
 }
 
 /* Main content */
-.container{
+.container.login{
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -75,42 +75,43 @@ body{
   flex-direction: column;
 }
 
-.login-form {
+.login .login-form {
   margin: 3.1rem auto;
   font-size: 0.93rem;
 }
 
-.login-form form {
+.login .login-form form {
   margin-bottom: 0.93rem;
   border-radius: 0.62rem;
   background: #E4E9F7;
   padding: 1.87rem;
 }
 
-.login-form h2 {
+.login .login-form h2 {
   margin: 0 0 0.93rem;
   font-size: 1.17rem;
 }
 
-.login-form .form-group{
+.login .login-form .form-group{
   padding: 0.75rem 0;
 }
 
-.login-form label{
+.login .login-form label{
   font-size: 1rem;
 }
 
-.form-control, .btn {
+.login .form-control, 
+.login .btn {
   min-height: 2.37rem;
   border-radius: 0.1rem;
 }
 
-.btn {        
+.login .btn {        
   font-size: 1rem;
   width: 100%;
 }
 
-.text-center{
+.login .text-center{
   font-size: 1rem;
   text-align: center;
 }
