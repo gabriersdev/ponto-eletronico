@@ -8,11 +8,11 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema ponto_eletronico
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema ponto_eletronico
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `ponto_eletronico` DEFAULT CHARACTER SET utf8 ;
 -- -----------------------------------------------------
@@ -21,7 +21,7 @@ CREATE SCHEMA IF NOT EXISTS `ponto_eletronico` DEFAULT CHARACTER SET utf8 ;
 USE `ponto_eletronico` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuarios`
+-- Table `ponto_eletronico`.`usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`usuarios` (
   `id_usuarios` BIGINT NOT NULL AUTO_INCREMENT,
@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`logs_acessos_usuarios`
+-- Table `ponto_eletronico`.`logs_acessos_usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`logs_acessos_usuarios` (
   `id_log` INT NOT NULL AUTO_INCREMENT,
@@ -54,7 +54,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuarios_registros`
+-- Table `ponto_eletronico`.`usuarios_registros`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`usuarios_registros` (
   `id_usario_registro` VARCHAR(15) NOT NULL,
@@ -75,7 +75,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuarios_horarios`
+-- Table `ponto_eletronico`.`usuarios_horarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`usuarios_horarios` (
   `cod_usuario_horario` BIGINT NOT NULL,
