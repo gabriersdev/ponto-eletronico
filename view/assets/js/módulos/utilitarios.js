@@ -70,7 +70,7 @@ function zeroEsquerda(quantidadeZeros, valor){
   return (zeros + valor).slice(-quantidadeZeros);
 }
 
-async function swalAlert(tipo, icon, title, text, mensagem){
+async function swalAlert(tipo, icon, title, text, mensagem, executar){
   tipo = tipo.toLowerCase().trim();
   if(tipo == 'confirmacao'){
     await Swal.fire({
@@ -81,11 +81,11 @@ async function swalAlert(tipo, icon, title, text, mensagem){
       confirmButtonText: 'Sair',
       focusCancel: true
     }).then((result) => {
-      if(result.isConfirmed) {
-        return true;
-      }else{
-        return false;
+      if(result.isConfirmed){
+        eval(executar)
       }
+
+      return result.isConfirmed;
     })
   }
 
@@ -104,10 +104,6 @@ async function swalAlert(tipo, icon, title, text, mensagem){
       text: text,
       footer: mensagem
     }) 
-  }
-
-  async function confirmacao(icon, title, text){
-
   }
 }
 
