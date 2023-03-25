@@ -8,32 +8,27 @@
         <small class="d-block mb-3 text-muted">Todos os direitos reservados.</small>
       </div>
       <div class="col-6 col-md">
-        <h5>Features</h5><br>
+        <h5>Recursos</h5><br>
         <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="inicio">Cartão de ponto</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="ultimos-registros">Últimos registros</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="horarios">Horários dia-a-dia</a></li>
         </ul>
       </div>
       <div class="col-6 col-md">
-        <h5>Resources</h5><br>
+        <h5>Navegação</h5><br>
         <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="inicio">Home</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="ultimos-registros">Últimos registros</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="horarios">Horários</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="sair">Sair</a></li>
         </ul>
       </div>
       <div class="col-6 col-md">
-        <h5>About</h5><br>
+        <h5>Sobre</h5><br>
         <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-dev">Desenvolvedor</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-projeto">GitHub</a></li>
         </ul>
       </div>
     </div>

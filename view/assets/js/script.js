@@ -24,7 +24,11 @@ function atribuirLinks(){
       break;
 
       case 'github-dev':
-      link.href = 'https://github.com/gabrieszin/';
+      link.href = 'https://github.com/gabrieszin';
+      break;
+
+      case 'github-projeto':
+      link.href = 'https://github.com/gabrieszin/timesheet';
       break;
     }
   })
