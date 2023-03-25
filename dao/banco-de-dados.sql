@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS ponto_eletronico CHARACTER SET 'utf8_mb4';
+CREATE SCHEMA IF NOT EXISTS ponto_eletronico CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci';
 USE ponto_eletronico;
 
 -- MySQL Workbench Forward Engineering
