@@ -107,6 +107,18 @@ async function swalAlert(tipo, icon, title, text, mensagem, executar){
   }
 }
 
+function removeSpace(input){
+  input.addEventListener('input', () => {
+    input.value = (input.value).replace(/( )+/g, '');
+  })
+}
+
+function clearForm(){
+  document.querySelectorAll('input').forEach(input => {
+    input.value = '';
+  })
+}
+
 export{
   isEmpty,
   capitalize,
@@ -114,5 +126,7 @@ export{
   controleFechamentoModal,
   sanitizarString,
   zeroEsquerda,
-  swalAlert
+  swalAlert,
+  removeSpace,
+  clearForm
 }
