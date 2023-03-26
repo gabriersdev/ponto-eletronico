@@ -39,11 +39,37 @@ CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`usuarios` (
 ENGINE = InnoDB;
 
 DELIMITER $
+CREATE FUNCTION fn_verifica_dados(email VARCHAR(100), senha VARCHAR(45)) RETURNS BIT
+	BEGIN
+		DECLARE id BIGINT;
+        DECLARE existe BIT DEFAULT 0;
+        SELECT id_usuario INTO id FROM usuarios WHERE email_usuario = email AND senha_usuario = senha;
+        
+        IF isnull(id) THEN
+			SET existe = 0;
+		ELSE 
+			SET existe = 1;
+		END IF;
+        
+        RETURN existe;
+    END $
+DELIMITER ;
+
+DELIMITER $
 CREATE FUNCTION fn_consulta_id(nome VARCHAR(45)) RETURNS BIGINT
 	BEGIN
 		DECLARE id BIGINT;
         SELECT id_usuario FROM usuarios WHERE nome_usuario = nome INTO id;
         RETURN id;
+    END $
+DELIMITER ;
+
+DELIMITER $
+CREATE FUNCTION fn_consulta_id_email(email VARCHAR(100)) RETURNS BIGINT
+	BEGIN
+		DECLARE id_usuario_email BIGINT;
+        SELECT id_usuario INTO id_usuario_email FROM usuarios WHERE email_usuario = email;
+        RETURN id_usuario_email;
     END $
 DELIMITER ;
 
