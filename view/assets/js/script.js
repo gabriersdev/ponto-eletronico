@@ -1,6 +1,6 @@
 "use strict";
 
-import { atualizarDatas, isEmpty, swalAlert, zeroEsquerda } from "./módulos/utilitarios.js";
+import { atualizarDatas, capitalize, isEmpty, swalAlert, zeroEsquerda } from "./módulos/utilitarios.js";
 
 function atribuirLinks(){
   const linkElementos = document.querySelectorAll('[data-link]');
@@ -35,9 +35,7 @@ function atribuirLinks(){
   
 }
 
-(() => {
-  hljs.highlightAll();
-  
+(() => {  
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
@@ -48,7 +46,7 @@ function atribuirLinks(){
   
   document.querySelectorAll('[data-recarrega-pagina]').forEach(botao => {
     botao.addEventListener('click', () => {
-      window.location.reload;
+      window.location.reload();
     })
   })
   
@@ -70,19 +68,14 @@ function marcarPaginaNoCabecalho(nome){
   }
 }
 
-function diferencaEmHoras(inicio, fim){
+function diferencaEntreDatas(inicio, fim){
   const ms = moment(inicio,"YYYY-MM-DD HH:mm:ss").diff(moment(fim,"YYYY-MM-DD HH:mm:ss"));
   const duracao = moment.duration(ms);
-  return Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss");
+  return {horas: Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss"), dias: duracao.days};
 }
 
-// console.log(diferencaEmHoras('2023-03-19 15:12:00', '2023-03-19 15:08:00'))
-
-function verificarODia(){
-  const data = moment()
+function verificarODia(data){
   let diaSemanaExtenso = null;
-
-  const dataCompleta = `${data.get('date')}/${zeroEsquerda(2, data.get('month') + 1)}/${data.get('year')}`;
 
   // const agora = new Date();
   // console.log(agora.getHours())
@@ -91,7 +84,7 @@ function verificarODia(){
   
   // console.log(Date.now() - new Date('2023-03-19 13:00:00').getTime())
 
-  switch(data.day()){
+  switch(data.day().toString()){
     case '0':
     diaSemanaExtenso = 'domingo';
     break;
@@ -118,8 +111,14 @@ function verificarODia(){
     
     case '6':
     diaSemanaExtenso = 'sábado';
-    break;    
+    break;   
+    
+    default:
+    console.log('O dia é inválido');
+    break;
   }
+
+  return diaSemanaExtenso;
 }
 
 const converterParaMesBRL = (numero) => {
@@ -199,7 +198,6 @@ function escutaSelecaoDropdown(){
 }
 
 escutaSelecaoDropdown();
-verificarODia();
 
 function escutaClickLinkSair(){
   const link = document.querySelector('[data-link="sair"]');
@@ -215,6 +213,27 @@ function escutaClickLinkSair(){
 
 escutaClickLinkSair();
 atualizarDatas();
+
+const cronometro = 
+setInterval(() => {
+  // console.clear();
+  // const agr = moment();
+  // console.log(diferencaEntreDatas(ontem, agr).horas);
+}, 1000);
+clearInterval(cronometro);
+
+/* Funções apenas para a página inicial */
+function atualizarDadosDia(){
+  const data = moment();
+  const componente = document.querySelector('[data-conteudo="dados-dia"]');
+  const dia = verificarODia(data);
+  if(!isEmpty(dia)){
+    componente.querySelector('.text-primary').textContent = capitalize(dia);
+    componente.querySelector('.text-dark-emphasis').textContent = `${data.get('date')} de ${converterParaMesBRL(data.get('month'))} de ${data.get('year')}`;
+  }
+}
+
+atualizarDadosDia();
 
 export{
   marcarPaginaNoCabecalho
