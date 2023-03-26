@@ -248,6 +248,7 @@
     </div>
   </main>
   
+  <script src="../assets/js/scripts/inicio.js" defer></script>
   <?php include '../padroes/footer.php' ?>
 
 </body>

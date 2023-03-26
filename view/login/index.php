@@ -12,7 +12,7 @@
     <main>
       <section class="container login">
         <div class="login-form">
-          <form action="" method="post">
+          <form action="" method="post" data-formulario="login">
             <h2 class="text-center">Login&nbsp;<span class="text-muted"><b>Ponto Eletrônico</b></span></h2>       
               <div class="form-group">
                 <label for="username">Usuário</label>
@@ -42,37 +42,9 @@
 
     <script>
 
-      function acaoControleVisualizacaoSenha(){
-        const inputs = document.querySelectorAll('input[type=password]');
-
-        if(typeof inputs == 'object'){
-          inputs.forEach(input => {
-            acao(input);
-          })
-        }else{
-          acao(inputs[0]);
-        }
-
-        function acao(input){
-          const botao = input.parentElement.querySelector('button');
-          botao.addEventListener('click', () => {
-            const atributo = input.getAttribute('type');
-            if(atributo == 'password'){
-              input.type = 'text';
-              botao.querySelector('i').classList.value = 'bi bi-eye-fill';
-            }else if(atributo == 'text'){
-              botao.querySelector('i').classList.value = 'bi bi-eye-slash-fill';
-              input.type = 'password';
-            }
-
-            // input.focus();
-          });
-        }
-      }
-
-      acaoControleVisualizacaoSenha();
-
     </script>
+
+    <script type="module" src="../assets/js/scripts/login.js" defer></script>
 
   </body>
 </html>

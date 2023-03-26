@@ -119,6 +119,47 @@ function clearForm(){
   })
 }
 
+function acaoControleVisualizacaoSenha(){
+  const inputs = document.querySelectorAll('input[type=password]');
+
+  if(typeof inputs == 'object'){
+    inputs.forEach(input => {
+      acao(input);
+    })
+  }else{
+    acao(inputs[0]);
+  }
+
+  function acao(input){
+    const botao = input.parentElement.querySelector('button');
+    botao.addEventListener('click', () => {
+      const atributo = input.getAttribute('type');
+      if(atributo == 'password'){
+        input.type = 'text';
+        botao.querySelector('i').classList.value = 'bi bi-eye-fill';
+      }else if(atributo == 'text'){
+        botao.querySelector('i').classList.value = 'bi bi-eye-slash-fill';
+        input.type = 'password';
+      }
+
+      // input.focus();
+    });
+  }
+}
+
+function confirmarSaidaUsuarioFormulario(){
+  window.onbeforeunload = (evento) => {
+    const inputs = document.querySelectorAll('input');
+    if(!isEmpty(inputs)){
+      inputs.forEach(input => {
+        if(!isEmpty(input.value)){
+          evento.returnValue = 'Tem certeza que deseja sair? Os seus dados serão perdidos.';
+        }
+      })
+    }
+  }
+}
+
 export{
   isEmpty,
   capitalize,
@@ -128,5 +169,7 @@ export{
   zeroEsquerda,
   swalAlert,
   removeSpace,
-  clearForm
+  clearForm,
+  acaoControleVisualizacaoSenha,
+  confirmarSaidaUsuarioFormulario
 }
