@@ -105,3 +105,21 @@ ul li a.selecionado::after{
   font-size: inherit;
   text-rendering: auto;
 }
+
+@media screen and (max-width: 410px) {
+  .table .input-group .form-control{
+    display: none;
+  }
+
+  .table .input-group .input-group-text{
+    border-radius: 5px !important;
+    background-color: transparent;
+    border: unset;
+    padding: 0;
+    margin: 0;
+  }
+
+  [data-tabela="ultimos-registros"] th:nth-child(2){
+    visibility: collapse;
+  }
+}

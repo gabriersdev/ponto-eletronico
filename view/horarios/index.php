@@ -15,96 +15,107 @@
           <h5>Horários</h5>
         </div>
         <div class="card-body">
-          <table class="table table-bordered border-dark-subtle table-striped table-hover">
-            <thead>
-              <th colspan="3">Segunda-feira</th>
-            </thead>
-            <tr>
-              <th>Entrada</th>
-              <th>Almoço</th>
-              <th>Saída</th>
-            </tr>
-            <tbody>
+          <div class="table-responsive">
+            <table class="table table-bordered border-dark-subtle table-striped table-hover">
+              <thead>
+                <th colspan="3">Segunda-feira</th>
+              </thead>
               <tr>
-                <td>09:00</td>
-                <td>12:00 - 13:00</td>
-                <td>17:30</td>
+                <th>Entrada</th>
+                <th>Almoço</th>
+                <th>Saída</th>
               </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr>
+                  <td>09:00</td>
+                  <td>12:00 - 13:00</td>
+                  <td>17:30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          <table class="table table-bordered border-dark-subtle table-striped table-hover">
-            <thead>
-              <th colspan="3">Terça-feira</th>
-            </thead>
-            <tr>
-              <th>Entrada</th>
-              <th>Almoço</th>
-              <th>Saída</th>
-            </tr>
-            <tbody>
+          <div class="table-responsive">
+            <table class="table table-bordered border-dark-subtle table-striped table-hover">
+              <thead>
+                <th colspan="3">Terça-feira</th>
+              </thead>
               <tr>
-                <td>09:00</td>
-                <td>12:00 - 13:00</td>
-                <td>17:30</td>
+                <th>Entrada</th>
+                <th>Almoço</th>
+                <th>Saída</th>
               </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr>
+                  <td>09:00</td>
+                  <td>12:00 - 13:00</td>
+                  <td>17:30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          <table class="table table-bordered border-dark-subtle table-striped table-hover">
-            <thead>
-              <th colspan="3">Quarta-feira</th>
-            </thead>
-            <tr>
-              <th>Entrada</th>
-              <th>Almoço</th>
-              <th>Saída</th>
-            </tr>
-            <tbody>
+          <div class="table-responsive">
+            <table class="table table-bordered border-dark-subtle table-striped table-hover">
+              <thead>
+                <th colspan="3">Quarta-feira</th>
+              </thead>
               <tr>
-                <td>09:00</td>
-                <td>12:00 - 13:00</td>
-                <td>17:30</td>
+                <th>Entrada</th>
+                <th>Almoço</th>
+                <th>Saída</th>
               </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr>
+                  <td>09:00</td>
+                  <td>12:00 - 13:00</td>
+                  <td>17:30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          <table class="table table-bordered border-dark-subtle table-striped table-hover">
-            <thead>
-              <th colspan="3">Quinta-feira</th>
-            </thead>
-            <tr>
-              <th>Entrada</th>
-              <th>Almoço</th>
-              <th>Saída</th>
-            </tr>
-            <tbody>
+          <div class="table-responsive">
+            <table class="table table-bordered border-dark-subtle table-striped table-hover">
+              <thead>
+                <th colspan="3">Quinta-feira</th>
+              </thead>
               <tr>
-                <td>09:00</td>
-                <td>12:00 - 13:00</td>
-                <td>17:30</td>
+                <th>Entrada</th>
+                <th>Almoço</th>
+                <th>Saída</th>
               </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr>
+                  <td>09:00</td>
+                  <td>12:00 - 13:00</td>
+                  <td>17:30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          <table class="table table-bordered border-dark-subtle table-striped table-hover">
-            <thead>
-              <th colspan="3">Sexta-feira</th>
-            </thead>
-            <tr>
-              <th>Entrada</th>
-              <th>Almoço</th>
-              <th>Saída</th>
-            </tr>
-            <tbody>
+          <div class="table-responsive">
+            <table class="table table-bordered border-dark-subtle table-striped table-hover">
+              <thead>
+                <th colspan="3">Sexta-feira</th>
+              </thead>
               <tr>
-                <td>09:00</td>
-                <td>12:00 - 13:00</td>
-                <td>17:30</td>
+                <th>Entrada</th>
+                <th>Almoço</th>
+                <th>Saída</th>
               </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr>
+                  <td>09:00</td>
+                  <td>12:00 - 13:00</td>
+                  <td>17:30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
+          <div class="table-responsive">
           <table class="table table-bordered border-dark-subtle table-striped table-hover">
             <thead>
               <th colspan="3">Sábado-feira</th>
@@ -122,6 +133,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
     </div>
   </main>

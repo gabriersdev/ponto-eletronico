@@ -58,94 +58,91 @@
               </div>
             </div>
             <div class="card-body">
-
-              <div class="alert alert-warning d-flex justify-content-between align-items-center" role="alert">
-                Não foram encontrados registros no período.
-                <button class="btn btn-outline-secondary">Recarregar</button>
-              </div>
               
               <!-- <button class="btn btn-outline-secondary btn-load">
                 <span class="spinner-border text-dark" role="status"></span>
               </button> -->
 
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Entrada</th>
-                    <th scope="col">Saída</th>
-                    <th scope="col">Tempo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row" colspan="2">
-                      <div class="input-group">
-                        <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="checkbox" checked disabled>
+              <div class="table-responsive">
+                <table class="table table-hover" data-tabela="ultimos-registros">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Data</th>
+                      <th scope="col">Entrada</th>
+                      <th scope="col">Saída</th>
+                      <th scope="col">Tempo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row" colspan="2">
+                        <div class="input-group">
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" checked disabled>
+                          </div>
+                          <input type="text" class="form-control" value="Sábado, 17/03/2023" disabled>
                         </div>
-                        <input type="text" class="form-control" value="Sábado, 17/03/2023" disabled>
-                      </div>
-                    </td>
-                    <td>08:00</td>
-                    <td>17:30</td>
-                    <td>08:30:00</td>
-                  </tr>
-                  <tr>
-                    <td scope="row" colspan="2">
-                      <div class="input-group">
-                        <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="checkbox" checked disabled>
+                      </td>
+                      <td>08:00</td>
+                      <td>17:30</td>
+                      <td>08:30:00</td>
+                    </tr>
+                    <tr>
+                      <td scope="row" colspan="2">
+                        <div class="input-group">
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" checked disabled>
+                          </div>
+                          <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                         </div>
-                        <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
-                      </div>
-                    </td>
-                    <td>08:00</td>
-                    <td>17:30</td>
-                    <td>08:30:00</td>
-                  </tr>
-                  <tr>
-                    <td scope="row" colspan="2">
-                      <div class="input-group">
-                        <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="checkbox" checked disabled>
+                      </td>
+                      <td>08:00</td>
+                      <td>17:30</td>
+                      <td>08:30:00</td>
+                    </tr>
+                    <tr>
+                      <td scope="row" colspan="2">
+                        <div class="input-group">
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" checked disabled>
+                          </div>
+                          <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                         </div>
-                        <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
-                      </div>
-                    </td>
-                    <td>08:00</td>
-                    <td>17:30</td>
-                    <td>08:30:00</td>
-                  </tr>
-                  <tr>
-                    <td scope="row" colspan="2">
-                      <div class="input-group">
-                        <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="checkbox" checked disabled>
+                      </td>
+                      <td>08:00</td>
+                      <td>17:30</td>
+                      <td>08:30:00</td>
+                    </tr>
+                    <tr>
+                      <td scope="row" colspan="2">
+                        <div class="input-group">
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" checked disabled>
+                          </div>
+                          <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                         </div>
-                        <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
-                      </div>
-                    </td>
-                    <td>08:00</td>
-                    <td>17:30</td>
-                    <td>08:30:00</td>
-                  </tr>
-                  <tr>
-                    <td scope="row" colspan="2">
-                      <div class="input-group">
-                        <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="checkbox" checked disabled>
+                      </td>
+                      <td>08:00</td>
+                      <td>17:30</td>
+                      <td>08:30:00</td>
+                    </tr>
+                    <tr>
+                      <td scope="row" colspan="2">
+                        <div class="input-group">
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" checked disabled>
+                          </div>
+                          <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
                         </div>
-                        <input type="text" class="form-control" value="Sexta-feira, 16/03/2023" disabled>
-                      </div>
-                    </td>
-                    <td>08:00</td>
-                    <td>17:30</td>
-                    <td>08:30:00</td>
-                  </tr>
-                </tbody>
-              </table>
+                      </td>
+                      <td>08:00</td>
+                      <td>17:30</td>
+                      <td>08:30:00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
