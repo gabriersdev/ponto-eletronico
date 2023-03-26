@@ -36,7 +36,7 @@ ENGINE = InnoDB;
 -- Table `ponto_eletronico`.`logs_acessos_usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`logs_acessos_usuarios` (
-  `id_log` INT NOT NULL AUTO_INCREMENT,
+  `id_log` BIGINT NOT NULL AUTO_INCREMENT,
   `data_hora_log` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   `cod_usuario_log` BIGINT NOT NULL,
   `sistema_op_log` VARCHAR(45) NOT NULL,
