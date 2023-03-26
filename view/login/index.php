@@ -44,7 +44,7 @@
 
     </script>
 
-    <script type="module" src="../assets/js/scripts/login.js" defer></script>
+    <script type="module" src="../assets/js/scripts/login-scripts.js" defer></script>
 
   </body>
 </html>

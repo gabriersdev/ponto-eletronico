@@ -14,7 +14,7 @@ import { acaoControleVisualizacaoSenha, confirmarSaidaUsuarioFormulario } from '
 
       $.ajax({
         method: "POST",
-        url: "../../controller/login.php",
+        url: "../../controller/login-controller.php",
         data: { dados: dados }
       })
 
