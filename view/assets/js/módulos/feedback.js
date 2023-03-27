@@ -1,3 +1,5 @@
+import { clearForm } from "./utilitarios.js";
+
 function credentialError(condition, title, text, error){
   if(condition == true){
     title == null ? title = 'Credenciais inválidas' : "" + title;
@@ -11,7 +13,7 @@ function credentialError(condition, title, text, error){
       footer: error
     });
     
-    clearForm();
+    // clearForm();
     const feedbackError = document.querySelector('#feedback-message-error');
     feedbackError.style.display = 'block';
     feedbackError.textContent = 'Credenciais inválidas!';
@@ -29,7 +31,7 @@ function accessWarning(condition, title, text, error){
       footer: error
     });
     
-    clearForm();
+    // clearForm();
     const feedbackWarning = document.querySelector('#feedback-message-warning');
     feedbackWarning.style.display = 'block';
     feedbackWarning.textContent = title;
@@ -66,7 +68,7 @@ function loginAut(condition, title, text, acao){
   
     if(acao !== null){
       setTimeout(() => {
-        window.location.href = "../interno-expresso/paginas";
+        // window.location.href = "#";
       }, 3000);
     }
   
