@@ -15,7 +15,6 @@ class LoginController{
   public function verificarUsuario($email, $senha){
     foreach($this->LoginDao->verificarUsuario(trim(strtolower($email)), trim($senha)) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
       foreach($value as $key_2 => $value_2){
-        echo $value_2;
         return $value_2;
       }
     }
@@ -29,5 +28,7 @@ class LoginController{
     return $this->registrarAcessoUsuario($codigo_usuario, $sistema_op, $local, $ip, $dispositivo);
   }
 }
+
+
 
 ?>

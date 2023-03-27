@@ -17,14 +17,10 @@ import { acaoControleVisualizacaoSenha, confirmarSaidaUsuarioFormulario } from '
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         data: dados,
         dataType: 'json',
-        // encode: true,
-        success: function(retorno){
-          console.log(retorno, 'Sucesso')
-        }
+        encode: true,
       })
 
-        .done(function(msg) {
-          console.log("Data Saved: " + msg);
+        .done(function(msg){
           console.log((msg));
         })
 

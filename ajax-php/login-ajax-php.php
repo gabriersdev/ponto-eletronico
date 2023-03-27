@@ -31,8 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
     $LoginController = new LoginController();
-    // $retorno['existe'] = 'XXX';
-    $retorno['existe'] = $LoginController -> verificarUsuario($usuario, $senha);
+    $retorno['existe'] = $LoginController -> verificarUsuario($usuario, $senha);;
 
   }else{
     $retorno['mensagem'] = 'Dados não recebidos ou incompletos';
