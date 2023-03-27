@@ -5,27 +5,32 @@ import { acaoControleVisualizacaoSenha, confirmarSaidaUsuarioFormulario } from '
   $(document).ready(function (){
     $('[data-formulario="login"]').submit(function(evento){
       evento.preventDefault();
-      console.log('Enviado')
 
       const dados = {
-        usuario: "John", 
-        senha: "Boston"
+        usuario: $('#username').val(), 
+        senha: $('#password').val()
       }
 
       $.ajax({
         method: "POST",
-        url: "../../controller/login-controller.php",
-        data: { dados: dados }
+        url: "../../ajax-php/login-ajax-php.php",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: dados,
+        dataType: 'json',
+        encode: true,
+        success: function(){}
       })
 
-        .done(function( msg ) {
+        .done(function(msg) {
           console.log("Data Saved: " + msg);
+          console.log((msg));
         })
 
-        .fail(function() {
+        .fail(function(erro){
+          console.log(erro);
           alert("error");
         })
-        .always(function() {
+        .always(function(){
           // alert("complete");
         });
 

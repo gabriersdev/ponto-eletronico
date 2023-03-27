@@ -1,8 +1,14 @@
 <?php
 
-class conexao{
-  
-  public function conectar(){
+class Conexao{
+  private $pdo;
+
+  public function __construct(){
+    $this->pdo = $this->oconn();
+    return $this->conectar();
+  }
+
+  private function oconn(){
     $config = array(
       'host' => 'localhost',
       'dbname' => 'ponto_eletronico',
@@ -24,8 +30,13 @@ class conexao{
     }
   }
   
+  public function conectar(){
+    return $this->pdo;
+  }
+
   public static function fechar($pdo){
     unset($pdo);
   }
 }
+
 ?>

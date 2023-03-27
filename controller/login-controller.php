@@ -1,42 +1,33 @@
 <?php
 
-  $retorno = array();
+require '../dao/conexao.php';
+require '../dao/login-dao.php';
+require '../lib/lib.php';
 
-  if(isset($_POST)){
-    if(!empty($_POST['dados']['usuario']) && !empty($_POST['dados']['senha'])){
-      $retorno['mensagem'] = 'Dados recebidos';
-      $retorno['sucesso'] = true;
-      
-      $filtro = array(
-        "dados" => array(
-          "usuario" => array(
-            "filter" => FILTER_SANITIZE_SPECIAL_CHARS,
-            "flags" => FILTER_FORCE_ARRAY,
-            "options" => "ucwords"
-          ),
-          "senha" => array(
-            "filter" => FILTER_SANITIZE_SPECIAL_CHARS,
-            "flags" => FILTER_FORCE_ARRAY,
-            "options" => "ucwords"
-          )
-        )
-        );
-
-      
-      $usuario = filter_var($_POST['dados']['usuario'], FILTER_SANITIZE_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE);
-      $usuario = trim(strtolower($usuario));
-
-      $senha = filter_var($_POST['dados']['senha'], FILTER_SANITIZE_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE);
-      $senha = trim($senha);
-
-    }else{
-      $retorno['mensagem'] = 'Dados não recebidos ou incompletos';
-      $retorno['sucesso'] = false;
-    }
-  }else{
-    $retorno['mensagem'] = 'Nenhum dado foi recebido';
-    $retorno['sucesso'] = false;
+class LoginController{
+  private $LoginDao;
+  
+  public function __construct(){
+    $this -> LoginDao = new LoginDao(new Conexao());
   }
+  
+  # Retorna 1 caso o usuário exista e 0 se ele não existir
+  public function verificarUsuario($email, $senha){
+    foreach($this->LoginDao->verificarUsuario(trim(strtolower($email)), trim($senha)) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
+      foreach($value as $key_2 => $value_2){
+        echo $value_2;
+        return $value_2;
+      }
+    }
+  }
+  
+  public function retornarIDUsuario($email, $senha){
+    return $this->LoginDao->retornarIDUsuario($email, $senha);
+  }
+  
+  public function registrarAcessoUsuario($codigo_usuario, $sistema_op, $local, $ip, $dispositivo){
+    return $this->registrarAcessoUsuario($codigo_usuario, $sistema_op, $local, $ip, $dispositivo);
+  }
+}
 
-  echo json_encode($retorno);
 ?>
