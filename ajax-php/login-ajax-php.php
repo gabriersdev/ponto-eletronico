@@ -1,5 +1,8 @@
 <?php
 header('Content-Type: text/html; charset = utf-8');
+header('Access-Control-Allow-Origin: localhost');
+header('Access-Control-Allow-Methods: *');
+// header('Content-Type: application/json');
 
 require '../controller/login-controller.php';
 $retorno = array();
@@ -28,7 +31,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
     $LoginController = new LoginController();
-    // $retorno['existe'] = $LoginController -> verificarUsuario($usuario, $senha);
+    // $retorno['existe'] = 'XXX';
+    $retorno['existe'] = $LoginController -> verificarUsuario($usuario, $senha);
 
   }else{
     $retorno['mensagem'] = 'Dados não recebidos ou incompletos';
@@ -40,7 +44,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
 }
 
 $retorno['x'] = $_POST;
-
 echo json_encode($retorno);
 
 ?>

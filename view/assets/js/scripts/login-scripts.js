@@ -17,8 +17,10 @@ import { acaoControleVisualizacaoSenha, confirmarSaidaUsuarioFormulario } from '
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         data: dados,
         dataType: 'json',
-        encode: true,
-        success: function(){}
+        // encode: true,
+        success: function(retorno){
+          console.log(retorno, 'Sucesso')
+        }
       })
 
         .done(function(msg) {
@@ -28,7 +30,7 @@ import { acaoControleVisualizacaoSenha, confirmarSaidaUsuarioFormulario } from '
 
         .fail(function(erro){
           console.log(erro);
-          alert("error");
+          // alert("error");
         })
         .always(function(){
           // alert("complete");
