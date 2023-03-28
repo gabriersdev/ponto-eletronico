@@ -1,3 +1,6 @@
+import { isEmpty, capitalize } from "../módulos/utilitarios.js";
+import { verificarODia, converterParaMesBRL } from "../script.js";
+
 (() => {
   /* Funções apenas para a página inicial */
   function atualizarDadosDia(){

@@ -223,5 +223,7 @@ setInterval(() => {
 clearInterval(cronometro);
 
 export{
-  marcarPaginaNoCabecalho
+  marcarPaginaNoCabecalho,
+  verificarODia,
+  converterParaMesBRL
 }
