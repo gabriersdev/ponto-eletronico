@@ -30,7 +30,7 @@
       }
     }
 
-    public function horarios($usuario, $dia){
+    public function horario($usuario, $dia){
       if(!empty($dia) && !empty($usuario)){
 
         try{
