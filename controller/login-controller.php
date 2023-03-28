@@ -13,11 +13,7 @@ class LoginController{
   
   # Retorna 1 caso o usuário exista e 0 se ele não existir
   public function verificarUsuario($email, $senha){
-    foreach($this->LoginDao->verificarUsuario(trim(strtolower($email)), trim($senha)) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
-      foreach($value as $key_2 => $value_2){
-        return $value_2;
-      }
-    }
+    return $this->LoginDao->verificarUsuario(trim(strtolower($email)), trim($senha));
   }
   
   public function retornarIDUsuario($email, $senha){

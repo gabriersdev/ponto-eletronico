@@ -30,12 +30,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
     $LoginController = new LoginController();
-    $existe = $LoginController -> verificarUsuario($usuario, $senha);
-
-    if(!empty($existe) && $existe == 1){
-      $retorno['mensagem'] = 'Dados corretos';
+    foreach($LoginController -> verificarUsuario($usuario, $senha) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
+      foreach($value as $key_2 => $value_2){
+        $existe = $value_2;
+      }
+    };
+    
+    if(isset($existe)){
+      if(!empty($existe) && $existe == 1){
+        $retorno['mensagem'] = 'Dados corretos';
+      }else{
+        $retorno['mensagem'] = 'Dados incorretos';
+      }
     }else{
-      $retorno['mensagem'] = 'Dados incorretos';
+      $retorno['mensagem'] = 'Erro na consulta dos dados informados';
+      $retorno['sucesso'] = false;
     }
 
   }else{
