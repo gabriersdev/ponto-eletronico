@@ -1,4 +1,5 @@
-import { capitalize, isEmpty, resumirHorario, swalAlert } from '../módulos/utilitarios.js'
+import { conteudos } from '../módulos/conteudos.js';
+import { capitalize, escutaClickRecarregaPagina, isEmpty, resumirHorario, swalAlert } from '../módulos/utilitarios.js'
 import { verificarODia } from '../script.js';
 
 (() => {
@@ -28,10 +29,9 @@ import { verificarODia } from '../script.js';
           
           case 'solicitação recebida':
             // console.log(msg);
+            const card_body = document.querySelector('.card-body');
             
             if(!isEmpty(msg.dados)){
-              const card_body = document.querySelector('.card-body');
-
               msg.dados.forEach(element => {
                 const dia = capitalize(verificarODia(element.dia_semana_usuario_horario));
                 const entrada = element.hora_entrada_usuario_horario;
@@ -41,23 +41,25 @@ import { verificarODia } from '../script.js';
 
                 card_body.innerHTML += `<div class="table-responsive"><table class="table table-bordered border-dark-subtle table-striped table-hover"><thead><th colspan="3">${dia}</th></thead><tr><th>Entrada</th><th>Almoço</th><th>Saída</th></tr><tbody><tr><td>${resumirHorario(entrada)}</td><td>${resumirHorario(saida_almoco)} - ${resumirHorario(retorno_almoco)}</td><td>${resumirHorario(saida)}</td></tr></tbody></table></div>`;
               });
-
             }else{
-              credentialError(true, 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI');
+              if(!isEmpty(conteudos.feedback.nenhum_horario)){
+                card_body.innerHTML = conteudos.feedback.nenhum_horario;
+                escutaClickRecarregaPagina();
+              }
             }
 
           break;
           
           case 'nenhum dado foi recebido':
           default:
-            credentialError(true, 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI');
-          break;
+            swalAlert('error', 'error', 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI', null);
+            break;
+          }
         }
-      }
-    })
-    
-    .fail(function(erro){
+      })
       
+    .fail(function(erro){
+      swalAlert('error', 'error', 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI', null);
     })
     
   })

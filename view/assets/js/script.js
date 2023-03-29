@@ -1,6 +1,6 @@
 "use strict";
 
-import { atualizarDatas, capitalize, isEmpty, swalAlert, zeroEsquerda } from "./módulos/utilitarios.js";
+import { atualizarDatas, capitalize, escutaClickRecarregaPagina, isEmpty, swalAlert, zeroEsquerda } from "./módulos/utilitarios.js";
 
 function atribuirLinks(){
   const linkElementos = document.querySelectorAll('[data-link]');
@@ -43,13 +43,8 @@ function atribuirLinks(){
   $(document).ready(function(){
     $('[data-bs-toggle="popover"]').popover();  
   });
-  
-  document.querySelectorAll('[data-recarrega-pagina]').forEach(botao => {
-    botao.addEventListener('click', () => {
-      window.location.reload();
-    })
-  })
-  
+
+  escutaClickRecarregaPagina();  
   atribuirLinks();
 })();
 

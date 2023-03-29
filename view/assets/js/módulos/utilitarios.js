@@ -170,6 +170,14 @@ function resumirHorario(horario){
   }
 }
 
+function escutaClickRecarregaPagina(){
+  document.querySelectorAll('[data-recarrega-pagina]').forEach(botao => {
+    botao.addEventListener('click', () => {
+      window.location.reload();
+    })
+  })
+}
+
 export{
   isEmpty,
   capitalize,
@@ -182,5 +190,6 @@ export{
   clearForm,
   acaoControleVisualizacaoSenha,
   confirmarSaidaUsuarioFormulario,
-  resumirHorario
+  resumirHorario,
+  escutaClickRecarregaPagina
 }
