@@ -160,6 +160,16 @@ function confirmarSaidaUsuarioFormulario(){
   }
 }
 
+function resumirHorario(horario){
+  if(horario.length >= 8){
+    return horario.substr(0, 5);
+  }
+
+  else{
+    return '';
+  }
+}
+
 export{
   isEmpty,
   capitalize,
@@ -171,5 +181,6 @@ export{
   removeSpace,
   clearForm,
   acaoControleVisualizacaoSenha,
-  confirmarSaidaUsuarioFormulario
+  confirmarSaidaUsuarioFormulario,
+  resumirHorario
 }

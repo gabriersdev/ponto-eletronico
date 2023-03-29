@@ -84,41 +84,57 @@ function verificarODia(data){
   
   // console.log(Date.now() - new Date('2023-03-19 13:00:00').getTime())
 
-  switch(data.day().toString()){
-    case '0':
-    diaSemanaExtenso = 'domingo';
-    break;
-    
-    case '1':
-    diaSemanaExtenso = 'segunda-feira';
-    break;
-    
-    case '2':
-    diaSemanaExtenso = 'terca-feira';
-    break;
-    
-    case '3':
-    diaSemanaExtenso = 'quarta-feira';
-    break;
-    
-    case '4':
-    diaSemanaExtenso = 'quinta-feira';
-    break;
-    
-    case '5':
-    diaSemanaExtenso = 'sexta-feira';
-    break;
-    
-    case '6':
-    diaSemanaExtenso = 'sábado';
-    break;   
-    
-    default:
-    console.log('O dia é inválido');
-    break;
+  try{
+    switch(data.day().toString()){
+      default:
+        return verificar(data.day.toString());
+      break;
+    }  
+  }catch(error){
+    switch(data){
+      default:
+        return verificar(data);
+      break;
+    }  
   }
 
-  return diaSemanaExtenso;
+  function verificar(dia){
+    switch(dia){
+      case '0':
+      diaSemanaExtenso = 'domingo';
+      break;
+      
+      case '1':
+      diaSemanaExtenso = 'segunda-feira';
+      break;
+      
+      case '2':
+      diaSemanaExtenso = 'terca-feira';
+      break;
+      
+      case '3':
+      diaSemanaExtenso = 'quarta-feira';
+      break;
+      
+      case '4':
+      diaSemanaExtenso = 'quinta-feira';
+      break;
+      
+      case '5':
+      diaSemanaExtenso = 'sexta-feira';
+      break;
+      
+      case '6':
+      diaSemanaExtenso = 'sábado';
+      break;   
+      
+      default:
+      console.log('O dia é inválido');
+      break;
+    }
+    return diaSemanaExtenso;
+  }
+
 }
 
 const converterParaMesBRL = (numero) => {
