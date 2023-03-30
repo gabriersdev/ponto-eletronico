@@ -21,7 +21,7 @@
               <div class="form-group">
                 <label for="password">Senha</label>
                 <div class="input-group mb-3">
-                  <input type="password" id="password" class="form-control" placeholder="Sua senha">
+                  <input type="password" id="password" class="form-control" placeholder="Sua senha" required="required">
                   <button type="button" class="input-group-text icon" id="basic-addon2"><i class="bi bi-eye-slash-fill" id="icon-view"></i></button>
                 </div>
               </div>

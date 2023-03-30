@@ -15,7 +15,6 @@ import { verificarODia } from '../script.js';
       encode: true,
     })
     
-    
     .done(function(msg){
       if(!isEmpty(msg) && !isEmpty(msg.mensagem)){
         switch(msg.mensagem.toLowerCase()){
