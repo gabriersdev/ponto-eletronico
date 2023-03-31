@@ -81,7 +81,7 @@ function verificarODia(data){
   try{
     switch(data.day().toString()){
       default:
-        return verificar(data.day.toString());
+        return verificar(data.day().toString());
       break;
     }  
   }catch(error){

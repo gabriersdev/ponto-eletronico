@@ -4,7 +4,7 @@ import { verificarODia, converterParaMesBRL } from "../script.js";
 (() => {
   /* Funções apenas para a página inicial */
   function atualizarDadosDia(){
-    const data = moment();
+    const data = moment(new Date());
     const componente = document.querySelector('[data-conteudo="dados-dia"]');
     const dia = verificarODia(data);
     if(!isEmpty(dia)){
