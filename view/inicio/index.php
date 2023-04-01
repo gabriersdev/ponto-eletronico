@@ -187,60 +187,7 @@
           </div>
           <a href="" data-link="horarios" type="button" class="btn btn-outline-secondary">Ver todos</a>
         </div>
-        <div class="card-body">
-          <table class="table table-bordered border-dark-subtle table-striped table-hover">
-            <thead>
-              <th colspan="3">Terça-feira</th>
-            </thead>
-            <tr>
-              <th>Entrada</th>
-              <th>Almoço</th>
-              <th>Saída</th>
-            </tr>
-            <tbody>
-              <tr>
-                <td>09:00</td>
-                <td>12:00 - 13:00</td>
-                <td>18:30</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table class="table table-bordered border-dark-subtle table-striped table-hover">
-            <thead>
-              <th colspan="3">Quarta-feira</th>
-            </thead>
-            <tr>
-              <th>Entrada</th>
-              <th>Almoço</th>
-              <th>Saída</th>
-            </tr>
-            <tbody>
-              <tr>
-                <td>09:00</td>
-                <td>12:00 - 13:00</td>
-                <td>17:30</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table class="table table-bordered border-dark-subtle table-striped table-hover">
-            <thead>
-              <th colspan="3">Quinta-feira</th>
-            </thead>
-            <tr>
-              <th>Entrada</th>
-              <th>Almoço</th>
-              <th>Saída</th>
-            </tr>
-            <tbody>
-              <tr>
-                <td>09:00</td>
-                <td>12:00 - 13:00</td>
-                <td>17:30</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="card-body" data-conteudo="horarios-proximos-dias">
         </div>
       </div>
 

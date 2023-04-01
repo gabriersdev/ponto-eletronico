@@ -31,14 +31,14 @@
     }
 
     public function horario($usuario, $dia){
-      if(!empty($dia) && !empty($usuario)){
+      if(!empty($dia) || $dia == 0 && !empty($usuario)){
 
         try{
 
           $requisicao = $this -> conexao;
           $stmt = $requisicao -> conectar() -> prepare('CALL usuarios_horarios_select_registro_dia(:usuario, :dia)');
           $stmt -> bindValue(':usuario', $usuario);
-          $stmt -> bindValue(':dia', $dia);
+          $stmt -> bindValue(':dia', intval($dia));
           $stmt -> execute();
 
           return $stmt;
