@@ -21,7 +21,7 @@ class LoginController{
   }
   
   public function registrarAcessoUsuario($codigo_usuario, $sistema_op, $local, $ip, $dispositivo){
-    return $this->registrarAcessoUsuario($codigo_usuario, $sistema_op, $local, $ip, $dispositivo);
+    return $this->LoginDao->registrarAcessoUsuario($codigo_usuario, $sistema_op, $local, $ip, $dispositivo);
   }
 }
 
