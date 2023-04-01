@@ -49,11 +49,11 @@ function sanitizarString(string){
         subst: ''
       },
     ]
-
+    
     substituir.forEach(substituicao => {
       string = string.replace(substituicao.original, substituicao.subst)
     })
-
+    
     return string.trim();
   }else{
     console.log('O tipo do parâmetro passado não é uma string.');
@@ -84,11 +84,11 @@ async function swalAlert(tipo, icon, title, text, mensagem, executar){
       if(result.isConfirmed){
         eval(executar)
       }
-
+      
       return result.isConfirmed;
     })
   }
-
+  
   else if(tipo == 'aviso'){
     Swal.fire({
       icon: icon,
@@ -96,7 +96,7 @@ async function swalAlert(tipo, icon, title, text, mensagem, executar){
       text: text
     })
   }
-
+  
   else if(tipo == 'error'){
     Swal.fire({
       icon: icon,
@@ -121,7 +121,7 @@ function clearForm(){
 
 function acaoControleVisualizacaoSenha(){
   const inputs = document.querySelectorAll('input[type=password]');
-
+  
   if(typeof inputs == 'object'){
     inputs.forEach(input => {
       acao(input);
@@ -129,7 +129,7 @@ function acaoControleVisualizacaoSenha(){
   }else{
     acao(inputs[0]);
   }
-
+  
   function acao(input){
     const botao = input.parentElement.querySelector('button');
     botao.addEventListener('click', () => {
@@ -141,7 +141,7 @@ function acaoControleVisualizacaoSenha(){
         botao.querySelector('i').classList.value = 'bi bi-eye-slash-fill';
         input.type = 'password';
       }
-
+      
       // input.focus();
     });
   }
@@ -164,7 +164,7 @@ function resumirHorario(horario){
   if(horario.length >= 8){
     return horario.substr(0, 5);
   }
-
+  
   else{
     return '';
   }
@@ -176,6 +176,32 @@ function escutaClickRecarregaPagina(){
       window.location.reload();
     })
   })
+}
+
+function cronometrar(inicio, fim){
+  const cronometro = 
+  setInterval(() => {
+    return diferencaEntreDatas(inicio, fim, 'crescente').horas
+  }, 1000);
+}
+
+function diferencaEntreDatas(inicio, fim, condicao){
+  let ms;
+  let duracao;
+
+  switch(condicao){
+    case 'crescente':
+    ms = moment(fim,"YYYY-MM-DD HH:mm:ss").diff(moment(inicio,"YYYY-MM-DD HH:mm:ss")) || moment(fim,"HH:mm:ss").diff(moment(inicio,"HH:mm:ss"));
+    break;
+    
+    case 'decrescente':
+    default:
+    ms = moment(inicio,"YYYY-MM-DD HH:mm:ss").diff(moment(fim,"YYYY-MM-DD HH:mm:ss")) || moment(inicio,"HH:mm:ss").diff(moment(fim,"HH:mm:ss"));
+    break;
+  }
+  
+  duracao = moment.duration(ms);
+  return {horas: Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss"), dias: duracao.days};
 }
 
 export{
@@ -191,5 +217,7 @@ export{
   acaoControleVisualizacaoSenha,
   confirmarSaidaUsuarioFormulario,
   resumirHorario,
-  escutaClickRecarregaPagina
+  escutaClickRecarregaPagina,
+  cronometrar,
+  diferencaEntreDatas
 }

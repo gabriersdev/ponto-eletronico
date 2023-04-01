@@ -13,13 +13,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     if(isset($id_usuario) && !empty($id_usuario)){
       $HorariosController = new HorariosController();
 
-      if(!empty($_POST['diasSelecionados'])){
+      if(!empty($_POST['diasSelecionados']) || $_POST['diasSelecionados'] == 0){
         $retorno['dados'] = array();
 
         $dias_selecionados = $_POST['diasSelecionados'];
 
-        foreach($dias_selecionados as $key => $value){
-          foreach($HorariosController -> horario($id_usuario, $value) -> fetchAll(PDO::FETCH_ASSOC) as $key_2 => $value_2){
+        if(is_array($dias_selecionados)){
+          foreach($dias_selecionados as $key => $value){
+            foreach($HorariosController -> horario($id_usuario, $value) -> fetchAll(PDO::FETCH_ASSOC) as $key_2 => $value_2){
+              array_push($retorno['dados'], $value_2);
+            }
+          }
+        }else{
+          foreach($HorariosController -> horario($id_usuario, $dias_selecionados) -> fetchAll(PDO::FETCH_ASSOC) as $key_2 => $value_2){
             array_push($retorno['dados'], $value_2);
           }
         }

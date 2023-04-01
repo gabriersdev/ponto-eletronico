@@ -16,73 +16,7 @@
           <h5 class="text-primary bold">Segunda-feira</h5>
           <h5 class="text-dark-emphasis">18 de março de 2023</h5>
         </div><br>
-        <div class="card-body">
-          <ul class="list-group">
-            <li class="list-group-item d-flex align-items-center justify-content-between list-group-title">
-              <b>Horário</b>&nbsp;
-              <div>
-                <button type="button" class="btn btn-primary">Registrar entrada</button>
-                <button type="button" class="btn btn-secondary">Registrar saída</button>
-              </div>
-            </li>
-            <li class="list-group-item d-flex align-items-center justify-content-between">
-              <div>
-                <span class="text-muted">Entrada:</span>
-                <span>09:00</span>
-              </div>
-              <span class="text-muted contador-atraso">Sem atraso</span>
-            </li>
-            <li class="list-group-item d-flex align-items-center justify-content-between">
-              <div>
-                <span class="text-muted">Saída:</span>
-                <span>17:30</span>
-              </div>
-              <span class="text-muted contador-atraso">Sem atraso</span>
-            </li>
-            <li class="list-group-item contador-periodos">
-              <div>
-                <span class="text-muted">Tempo decorrido:</span>
-                <span>01:00:00</span>
-              </div>
-              <div>
-                <span class="text-muted">Tempo restante:</span>
-                <span>01:00:00</span>
-              </div>
-            </li>
-          </ul><br>
-          <ul class="list-group">
-            <li class="list-group-item d-flex align-items-center justify-content-between list-group-title">
-              <b>Almoço</b>&nbsp;
-              <div>
-                <button type="button" class="btn btn-primary">Registrar saída</button>
-                <button type="button" class="btn btn-secondary">Registrar retorno</button>
-              </div>
-            </li>
-            <li class="list-group-item d-flex align-items-center justify-content-between">
-              <div>
-                <span class="text-muted">Saída:</span>
-                <span>12:00</span>
-              </div>
-              <span class="text-muted contador-atraso">Sem atraso</span>
-            </li>
-            <li class="list-group-item d-flex align-items-center justify-content-between">
-              <div>
-                <span class="text-muted">Retorno:</span>
-                <span>13:00</span>
-              </div>
-              <span class="text-muted contador-atraso">Sem atraso</span>
-            </li>
-            <li class="list-group-item contador-periodos">
-              <div>
-                <span class="text-muted">Tempo decorrido:</span>
-                <span>01:00:00</span>
-              </div>
-              <div>
-                <span class="text-muted">Tempo restante:</span>
-                <span>01:00:00</span>
-              </div>
-            </li>
-          </ul>
+        <div class="card-body" data-conteudo="horarios-hoje">
         </div>
       </div>
 

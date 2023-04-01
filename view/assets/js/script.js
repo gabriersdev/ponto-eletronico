@@ -63,12 +63,6 @@ function marcarPaginaNoCabecalho(nome){
   }
 }
 
-function diferencaEntreDatas(inicio, fim){
-  const ms = moment(inicio,"YYYY-MM-DD HH:mm:ss").diff(moment(fim,"YYYY-MM-DD HH:mm:ss"));
-  const duracao = moment.duration(ms);
-  return {horas: Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss"), dias: duracao.days};
-}
-
 function verificarODia(data){
   let diaSemanaExtenso = null;
 
