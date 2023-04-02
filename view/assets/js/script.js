@@ -20,7 +20,7 @@ function atribuirLinks(){
       break;
       
       case 'sair':
-      link.href = '#';
+      link.href = '../sair/';
       break;
 
       case 'github-dev':
@@ -206,9 +206,7 @@ function escutaClickLinkSair(){
   if(!isEmpty(link)){
     link.addEventListener('click', (evento) => {
       evento.preventDefault();
-      swalAlert('confirmacao', 'question', 'Tem certeza que deseja sair?', 'A sua sessão será encerrada, e um novo login terá de ser feito para acessar o Ponto Eletrônico', null, "window.location.href = 'https://www.twitch.tv'").then(retorno => {
-        // console.log(retorno);
-      })
+      swalAlert('confirmacao', 'question', 'Tem certeza que deseja sair?', 'A sua sessão será encerrada, e um novo login terá de ser feito para acessar o Ponto Eletrônico', null, `window.location.href = "${evento.target.href}"`).then(retorno => {})
     })
   }
 }

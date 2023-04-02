@@ -82,7 +82,7 @@ async function swalAlert(tipo, icon, title, text, mensagem, executar){
       focusCancel: true
     }).then((result) => {
       if(result.isConfirmed){
-        eval(executar)
+        eval(executar);
       }
       
       return result.isConfirmed;
