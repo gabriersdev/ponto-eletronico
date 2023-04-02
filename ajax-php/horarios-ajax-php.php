@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     if(isset($id_usuario) && !empty($id_usuario)){
       $HorariosController = new HorariosController();
       
-      if(!empty($_POST['diasSelecionados'])){
+      if(isset($_POST['diasSelecionados']) || !empty($_POST['diasSelecionados'])){
         $retorno['dados'] = array();
         
         $dias_selecionados = $_POST['diasSelecionados'];

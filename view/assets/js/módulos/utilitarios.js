@@ -207,8 +207,8 @@ function diferencaEntreDatas(inicio, fim, condicao){
 function formatarData(input){
   const data = new Date(input);
   const dia  = data.getUTCDate().toString().padStart(2, '0'),
-  mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
-  ano  = data.getFullYear();
+  mes  = (data.getUTCMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+  ano  = data.getUTCFullYear();
   return dia+"/"+mes+"/"+ano;
 }
 

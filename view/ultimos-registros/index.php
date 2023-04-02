@@ -21,19 +21,21 @@
               Pesquisa
             </div>
             <div class="card-body">
-              <form>
+              <form data-fomrulario="pesquisa-ultimos-horarios">
                 <div class="row">
                   <div class="col">
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3" data-input-group="data-inicio">
                       <label for="data-inicio" class="btn btn-outline-primary input-group-text" id="basic-addon2">Início</label>
-                      <input type="date" id="data-inicio" name="data-inicio" class="form-control" aria-describedby="basic-addon2">
+                      <input type="date" id="data-inicio" name="data-inicio" class="form-control" aria-describedby="basic-addon2" required>
                     </div>
+                    <div class="alert alert-warning feedback-dados-inseridos none" role="alert"></div>
                   </div>
                   <div class="col">
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3" data-input-group="data-fim">
                       <label class="btn btn-outline-secondary input-group-text" for="data-fim" id="basic-addon2">Fim</label>
-                      <input type="date" id="data-fim" name="data-fim" class="form-control" aria-describedby="basic-addon2">
+                      <input type="date" id="data-fim" name="data-fim" class="form-control" aria-describedby="basic-addon2" required>
                     </div>
+                    <div class="alert alert-warning feedback-dados-inseridos none" role="alert"></div>
                   </div>
                   <div class="">
                     <button type="submit" class="btn btn-primary">Pesquisar</button>
@@ -48,7 +50,7 @@
               Registros
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" data-acao="btn-dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Ordenação
+                  Ordem
                 </button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item selecionado" href="#">Mais recentes</a></li>
@@ -58,11 +60,13 @@
               </div>
             </div>
             <div class="card-body" data-conteudo="registros">
-              
-              <!-- <button class="btn btn-outline-secondary btn-load">
-                <span class="spinner-border text-dark" role="status"></span>
-              </button> -->
-
+              <div class="alert alert-secondary d-flex justify-content-between align-items-center feedback-resultados-pesquisa none" role="alert">
+                <div>
+                  <h5><b>Resultados para a pesquisa</b></h5>
+                  <span data-conteudo="range-datas-pesquisa"></span>
+                </div>
+                <button class="btn btn-outline-secondary" data-recarrega-pagina>Recarregar</button>
+              </div>
               <div class="table-responsive">
                 <table class="table table-hover" data-tabela="ultimos-registros">
                   <thead>

@@ -7,6 +7,8 @@ require '../controller/ultimos-horarios-controller.php';
 $retorno = array();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
+  $UltimosHorariosController = new UltimosHorariosController();
+
   if(!empty($_POST['solicitacao']) && !empty($_POST['quantidade'])){
     $retorno['mensagem'] = 'Dados recebidos';
     $retorno['sucesso'] = true;
@@ -14,8 +16,32 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     $retorno['dados'] = array();
     $quantidade = filter_input(INPUT_POST, 'quantidade', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    $UltimosHorariosController = new UltimosHorariosController();
     foreach($UltimosHorariosController -> registrosUsuariosLimite(1, $quantidade) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
+      $dia = htmlentities($value['data_usuario_registro']);
+      $entrada = htmlentities($value['hora_entrada_usuario_registro']);
+      $saida = htmlentities($value['hora_saida_usuario_registro']);
+      $saida_almoco = !empty($value['hora_saida_usuario_almoco']) ? htmlentities($value['hora_saida_usuario_almoco']) : '';
+      $retorno_almoco = !empty($value['hora_retorno_usuario_almoco']) ? htmlentities($value['hora_retorno_usuario_almoco']) : '';
+      
+      array_push($retorno['dados'], 
+      array(
+        "dia_semana_usuario_horario" => $dia, 
+        "hora_entrada_usuario_horario" => $entrada, 
+        "hora_saida_usuario_horario" => $saida, 
+        "hora_saida_usuario_almoco" => $saida_almoco, 
+        "hora_retorno_usuario_almoco" => $retorno_almoco)
+      );
+    }
+
+  }else if(!empty($_POST['solicitacao']) && !empty($_POST['inicio']) && !empty($_POST['fim'])){
+    $retorno['mensagem'] = 'Dados recebidos';
+    $retorno['sucesso'] = true;
+
+    $retorno['dados'] = array();
+    $inicio = filter_input(INPUT_POST, 'inicio', FILTER_SANITIZE_SPECIAL_CHARS);
+    $fim = filter_input(INPUT_POST, 'fim', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    foreach($UltimosHorariosController -> registrosUsuariosPeriodos(1, $inicio, $fim) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
       $dia = htmlentities($value['data_usuario_registro']);
       $entrada = htmlentities($value['hora_entrada_usuario_registro']);
       $saida = htmlentities($value['hora_saida_usuario_registro']);
