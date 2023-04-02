@@ -2,6 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container container-fluid">
         <a class="navbar-brand bold" href="" data-link="inicio">Cartão de Ponto</a>
+        <div>
         <button class="navbar-toggler box-desabilitado" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,6 +18,7 @@
               <a class="nav-link active" aria-current="page" href="" data-link="sair" data-referencia="sair">Sair <i class="bi bi-box-arrow-right"></i></a>
             </li>
           </ul>
+        </div>
         </div>
       </div>
     </nav>

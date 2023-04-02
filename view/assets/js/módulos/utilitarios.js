@@ -13,9 +13,20 @@ const capitalize = (valor) => {
 }
 
 const atualizarDatas = () => {
-  const dataAtual = new Date();
+  const hoje = moment();
   document.querySelectorAll("[data-ano-atual]").forEach(area => {
-    area.textContent = `${dataAtual.getFullYear()}`;
+    area.textContent = `${hoje.year()}`;
+  })
+  
+  document.querySelectorAll("[data-cumprimento-atual]").forEach(cumprimento => {
+    const hora = hoje.hour();
+    if(hora >= 0 && hora < 12){
+      cumprimento.textContent = 'Bom dia';
+    }else if(hora >= 12 && hora < 18){
+      cumprimento.textContent = 'Boa tarde';
+    }else{
+      cumprimento.textContent = 'Boa noite'
+    }
   })
 } 
 

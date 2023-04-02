@@ -11,17 +11,25 @@
   <main class="principal">
     <div class="container">
       <div class="card">
+        <div class="card-body d-flex justify-content-start align-items-center flex-wrap">
+          <img src="../assets/img/person-circle.svg" alt="Icon de uma pessoa" class="rounded-circle" height="50rem" style="opacity: 0.6;">
+          <div class="ms-3">
+            <h5 class="text-dark-emphasis text-rigth" data-cumprimento-atual>Bom dia</h5>
+            <h4 class="text-dark-emphasis text-right bold mt-1">Gabriel</h4>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="card">
         <span class="tag-destaque"></span>
         <div class="card-header" data-conteudo="dados-dia">
-          <h5 class="text-primary bold">Segunda-feira</h5>
-          <h5 class="text-dark-emphasis">18 de março de 2023</h5>
+          <h5 class="text-primary bold"></h5>
+          <h5 class="text-dark-emphasis"></h5>
         </div><br>
         <div class="card-body" data-conteudo="horarios-hoje">
         </div>
       </div>
-
       <br>
-
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
           <h5 class="text-muted">Últimos registros</h5>
@@ -45,9 +53,7 @@
           </div>
         </div>
       </div>
-
       <br>
-
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
           <div>
@@ -59,7 +65,6 @@
         <div class="card-body" data-conteudo="horarios-proximos-dias">
         </div>
       </div>
-
       </div>
     </div>
   </main>
