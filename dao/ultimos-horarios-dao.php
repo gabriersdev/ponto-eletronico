@@ -13,7 +13,7 @@ class UltimosHorariosDAO{
         $requisicao = $this -> conexao;
         $stmt = $requisicao -> conectar() -> prepare("CALL pd_usuarios_registros_select(:codigo, :quantidade)");
         $stmt -> bindValue(':codigo', $codigo_usuario);
-        $stmt -> bindValue(':quantidade', $quantidade_ultimos_dias);
+        $stmt -> bindValue(':quantidade', intval($quantidade_ultimos_dias));
         $stmt -> execute();
 
         return $stmt;

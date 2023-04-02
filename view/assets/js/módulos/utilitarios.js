@@ -188,7 +188,7 @@ function cronometrar(inicio, fim){
 function diferencaEntreDatas(inicio, fim, condicao){
   let ms;
   let duracao;
-
+  
   switch(condicao){
     case 'crescente':
     ms = moment(fim,"YYYY-MM-DD HH:mm:ss").diff(moment(inicio,"YYYY-MM-DD HH:mm:ss")) || moment(fim,"HH:mm:ss").diff(moment(inicio,"HH:mm:ss"));
@@ -202,6 +202,14 @@ function diferencaEntreDatas(inicio, fim, condicao){
   
   duracao = moment.duration(ms);
   return {horas: Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss"), dias: duracao.days};
+}
+
+function formatarData(input){
+  const data = new Date(input);
+  const dia  = data.getUTCDate().toString().padStart(2, '0'),
+  mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+  ano  = data.getFullYear();
+  return dia+"/"+mes+"/"+ano;
 }
 
 export{
@@ -219,5 +227,6 @@ export{
   resumirHorario,
   escutaClickRecarregaPagina,
   cronometrar,
-  diferencaEntreDatas
+  diferencaEntreDatas,
+  formatarData
 }
