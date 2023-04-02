@@ -87,7 +87,7 @@ function verificarODia(data){
   }
 
   function verificar(dia){
-    switch(dia){
+    switch(dia.toString()){
       case '0':
       diaSemanaExtenso = 'domingo';
       break;

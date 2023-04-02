@@ -19,5 +19,4 @@ class UltimosHorariosController{
     return $this -> UltimosHorariosDAO -> registrosUsuariosPeriodos($codigo_usuario, $inicio, $fim);
   }
 }
-
 ?>

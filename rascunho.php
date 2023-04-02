@@ -12,21 +12,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
   if(!empty($_POST['solicitacao'])){
     if(isset($id_usuario) && !empty($id_usuario)){
       $HorariosController = new HorariosController();
-      
-      if(!empty($_POST['diasSelecionados'])){
+
+      if(!empty($_POST['diasSelecionados']) || $_POST['diasSelecionados'] == 0){
         $retorno['dados'] = array();
-        
+
         $dias_selecionados = $_POST['diasSelecionados'];
-        
+
         if(is_array($dias_selecionados)){
           foreach($dias_selecionados as $key => $value){
             foreach($HorariosController -> horario($id_usuario, $value) -> fetchAll(PDO::FETCH_ASSOC) as $key_2 => $value_2){
               $dia = htmlentities($value_2['dia_semana_usuario_horario']);
               $entrada = htmlentities($value_2['hora_entrada_usuario_horario']);
               $saida = htmlentities($value_2['hora_saida_usuario_horario']);
-              $saida_almoco = !empty($value_2['hora_saida_usuario_almoco']) ? htmlentities($value_2['hora_saida_usuario_almoco']) : '';
-              $retorno_almoco = !empty($value_2['hora_retorno_usuario_almoco']) ? htmlentities($value_2['hora_retorno_usuario_almoco']) : '';
-              
+              $saida_almoco = htmlentities($value_2['hora_saida_usuario_almoco']);
+              $retorno_almoco = htmlentities($value_2['hora_retorno_usuario_almoco']);
+
               array_push($retorno['dados'], 
               array(
                 "dia_semana_usuario_horario" => $dia, 
@@ -42,9 +42,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
             $dia = htmlentities($value_2['dia_semana_usuario_horario']);
             $entrada = htmlentities($value_2['hora_entrada_usuario_horario']);
             $saida = htmlentities($value_2['hora_saida_usuario_horario']);
-            $saida_almoco = !empty($value_2['hora_saida_usuario_almoco']) ? htmlentities($value_2['hora_saida_usuario_almoco']) : '';
-            $retorno_almoco = !empty($value_2['hora_retorno_usuario_almoco']) ? htmlentities($value_2['hora_retorno_usuario_almoco']) : '';
-            
+            $saida_almoco = htmlentities($value_2['hora_saida_usuario_almoco']);
+            $retorno_almoco = htmlentities($value_2['hora_retorno_usuario_almoco']);
+
             array_push($retorno['dados'], 
             array(
               "dia_semana_usuario_horario" => $dia, 
@@ -55,19 +55,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
             );
           }
         }
-        
+
         $retorno['mensagem'] = 'Solicitação recebida';
         $retorno['sucesso'] = true;
       }else{
         $retorno['dados'] = array();
-        
+
         foreach($HorariosController -> todosHorarios($id_usuario) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
           $dia = htmlentities($value['dia_semana_usuario_horario']);
           $entrada = htmlentities($value['hora_entrada_usuario_horario']);
           $saida = htmlentities($value['hora_saida_usuario_horario']);
-          $saida_almoco = !empty($value['hora_saida_usuario_almoco']) ? htmlentities($value['hora_saida_usuario_almoco']) : '';
-          $retorno_almoco = !empty($value['hora_retorno_usuario_almoco']) ? htmlentities($value['hora_retorno_usuario_almoco']) : '';
-          
+          $saida_almoco = htmlentities($value['hora_saida_usuario_almoco']);
+          $retorno_almoco = htmlentities($value['hora_retorno_usuario_almoco']);
+  
           array_push($retorno['dados'], 
           array(
             "dia_semana_usuario_horario" => $dia, 

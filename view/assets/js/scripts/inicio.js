@@ -58,7 +58,7 @@ import { conteudos } from "../módulos/conteudos.js";
       method: "POST",
       url: "../../ajax-php/horarios-ajax-php.php",
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      data: {solicitacao: 'true', diasSelecionados: 1},
+      data: {solicitacao: 'true', diasSelecionados: moment(new Date()).day()},
       dataType: 'json',
       encode: true,
     })
@@ -79,7 +79,7 @@ import { conteudos } from "../módulos/conteudos.js";
           
           if(!isEmpty(msg.dados)){
             msg.dados.forEach(element => {
-              const dia = capitalize(verificarODia(element.dia_semana_usuario_horario));
+              const dia = capitalize(verificarODia(parseInt(element.dia_semana_usuario_horario)));
               const entrada = element.hora_entrada_usuario_horario;
               const saida = element.hora_saida_usuario_horario;
               const saida_almoco = !isEmpty(element.hora_saida_usuario_almoco) ? element.hora_saida_usuario_almoco : '';

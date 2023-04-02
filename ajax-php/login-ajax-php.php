@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     $LoginController = new LoginController();
     foreach($LoginController -> verificarUsuario($usuario, $senha) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
       foreach($value as $key_2 => $value_2){
-        $existe = $value_2;
+        $existe = htmlentities($value_2);
       }
     };
     
