@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 header('Content-Type: text/html; charset = utf-8');
 header('Access-Control-Allow-Origin: localhost');
 header('Access-Control-Allow-Methods: *');
@@ -38,7 +40,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     
     if(isset($existe)){
       if(!empty($existe) && $existe == 1){
-        $retorno['mensagem'] = 'Dados corretos';
+        
+        try{
+          $_SESSION['usuario'] = $usuario;
+          $_SESSION['senha'] = $senha;
+
+          $retorno['mensagem'] = 'Dados corretos';
+        }catch(Exception $e){
+          $retorno['mensagem'] = 'Erro na criação da sessão';
+        }
+
       }else{
         $retorno['mensagem'] = 'Dados incorretos';
       }

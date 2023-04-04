@@ -40,11 +40,14 @@ import { credentialError, accessAut, accessWarning } from '../módulos/feedback.
                 break;
   
                 case 'dados incorretos':
-                  credentialError(true, 'Dados incorretos', 'E-mail e/ou senha informado(s) incorreto(s)', 'Erro: 1235KY')
+                  credentialError(true, 'Dados incorretos', 'E-mail e/ou senha informado(s) incorreto(s)', 'Erro: 1235KY');
                 break;
   
                 case 'dados corretos':
                   accessAut(true);
+                  setTimeout(() => {
+                    window.location.href = '../inicio/';
+                  }, 2000);
                 break;
   
                 case 'nenhum dado foi recebido':
@@ -63,7 +66,6 @@ import { credentialError, accessAut, accessWarning } from '../módulos/feedback.
             botao.innerHTML = conteudo;
             botao.style.width = `${width}px`;
           });
-
       }, 2000);
 
     })
