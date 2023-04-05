@@ -27,4 +27,23 @@
     }
   }
 
+  function verificarValoresArmazenados(){
+    if(isset($_SESSION)){
+      if(!empty($_SESSION['usuario']) || $_SESSION['usuario'] == 0 && 
+      !empty($_SESSION['senha']) || $_SESSION['senha'] == 0){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
+  }
+
+  function login($status){
+    if(!$status){
+      die("<script type='module'>import { swalAlert } from '../assets/js/módulos/utilitarios.js'; swalAlert('error', 'error', 'Sessão inválida ou não definida', 'As informações não foram armazenadas corretamente ou estão inválidas. Você será redirecionado para o login', '8870SS', null).then(() => {setTimeout(()=>{window.location.href = '../login/'}, 4000)});</script>");
+    }
+  }
+
 ?>

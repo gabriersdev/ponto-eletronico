@@ -82,6 +82,7 @@ function zeroEsquerda(quantidadeZeros, valor){
 }
 
 async function swalAlert(tipo, icon, title, text, mensagem, executar){
+  // console.log(executar);
   tipo = tipo.toLowerCase().trim();
   if(tipo == 'confirmacao'){
     await Swal.fire({

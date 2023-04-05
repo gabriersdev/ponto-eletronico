@@ -1,5 +1,16 @@
 <?php 
-  session_start();
+  // session_start();
+  $acesso = false;
+
+  require '../../lib/lib.php';
+
+  if(verificarValoresArmazenados()){
+    echo "";
+    $acesso = true;
+  }else{
+    ;
+  };
+
   // print_r($_SESSION['usuario']);
   // print_r($_SESSION['senha']);
 ?>
@@ -11,6 +22,7 @@
 </head>
 <body>
 
+  <?php login($acesso)?>
   <?php require '../padroes/no-script.php'; ?>
   <?php require '../padroes/header.php'; ?>
 
