@@ -9,4 +9,13 @@
     return $saida;
   }
 
+  function descriptografar($input){
+    try{
+      return base64_decode(base64_decode($input));
+    }catch(Exception $e){
+      echo $e;
+      return null;
+    }
+  }
+
 ?>

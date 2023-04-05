@@ -1,3 +1,9 @@
+<?php 
+  session_start();
+  // print_r($_SESSION['usuario']);
+  // print_r($_SESSION['senha']);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
