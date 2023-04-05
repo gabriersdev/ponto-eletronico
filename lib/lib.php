@@ -18,4 +18,13 @@
     }
   }
 
+  function criptografar($input){
+    try{
+      return base64_encode(base64_encode($input));
+    }catch(Exception $e){
+      echo $e;
+      return null;
+    }
+  }
+
 ?>

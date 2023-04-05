@@ -6,6 +6,7 @@ header('Access-Control-Allow-Origin: localhost');
 header('Access-Control-Allow-Methods: *');
 
 require '../controller/login-controller.php';
+require '../lib/lib.php';
 $retorno = array();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
@@ -42,8 +43,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
       if(!empty($existe) && $existe == 1){
         
         try{
-          $_SESSION['usuario'] = base64_encode(base64_encode($usuario));
-          $_SESSION['senha'] = base64_encode(base64_encode($senha));
+          $_SESSION['usuario'] = criptografar($senha);
+          $_SESSION['senha'] = criptografar($senha);
 
           $retorno['mensagem'] = 'Dados corretos';
         }catch(Exception $e){
