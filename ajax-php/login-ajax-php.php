@@ -43,6 +43,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
       if(!empty($existe) && $existe == 1){
         
         try{
+          
+
           $_SESSION['usuario'] = criptografar($senha);
           $_SESSION['senha'] = criptografar($senha);
 

@@ -25,4 +25,9 @@ class LoginController{
   }
 }
 
+## Testar Registro de Acesso
+// $t = new LoginController();
+// foreach($t -> registrarAcessoUsuario(152, 'Windows', 'Belo Horizonte', '12345', 'PC') -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
+// }
+
 ?>

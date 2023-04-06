@@ -1,5 +1,5 @@
 <?php 
-  // session_start();
+  session_start();
   $acesso = false;
 
   require '../../lib/lib.php';
@@ -10,9 +10,6 @@
   }else{
     ;
   };
-
-  // print_r($_SESSION['usuario']);
-  // print_r($_SESSION['senha']);
 ?>
 
 <!DOCTYPE html>
