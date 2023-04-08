@@ -41,9 +41,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     if(isset($existe)){
       if(!empty($existe) && $existe == 1){
         
+        $id = 0;
+
+        foreach($LoginController -> retornarIDUsuario($usuario, $senha) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
+          foreach($value as $key_2 => $value_2){
+            $id = htmlentities($value_2);
+          }
+        }
+
         try{
           $_SESSION['usuario'] = criptografar($senha);
           $_SESSION['senha'] = criptografar($senha);
+
+          $LoginController -> registrarAcessoUsuario($id, verificarSistemaOperacional(), 'undefined', retornarIP(), verificarNavegador());
 
           $retorno['mensagem'] = 'Dados corretos';
         }catch(Exception $e){
