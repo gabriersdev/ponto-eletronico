@@ -28,13 +28,22 @@ function criptografar($input){
 }
 
 function verificarValoresArmazenados(){
-  if(isset($_SESSION)){
-    if(!empty($_SESSION['usuario']) || $_SESSION['usuario'] == 0 && 
-    !empty($_SESSION['senha']) || $_SESSION['senha'] == 0){
-      return true;
-    }else{
+  if(isset($_SESSION) && isset($_SESSION['usuario']) && isset($_SESSION['senha'])){
+
+    try{
+      $usuario = $_SESSION['usuario'];
+      $senha = $_SESSION['senha'];
+  
+      if(!empty($usuario) || $usuario == 0 &&
+      !empty($senha) || $senha == 0){
+        return true;
+      }else{
+        return false;
+      }
+    }catch(Exception $e){
       return false;
     }
+
   }else{
     return false;
   }

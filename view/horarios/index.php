@@ -1,3 +1,17 @@
+<?php 
+  session_start();
+  require '../../lib/lib.php';
+
+  $acesso = false;
+
+  if(verificarValoresArmazenados()){
+    echo "";
+    $acesso = true;
+  }else{
+    ;
+  };
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,6 +19,7 @@
 </head>
 <body>
 
+  <?php login($acesso)?>
   <?php require '../padroes/no-script.php'; ?>
   <?php require '../padroes/header.php'; ?>
 

@@ -1,8 +1,8 @@
 <?php 
   session_start();
-  $acesso = false;
-
   require '../../lib/lib.php';
+
+  $acesso = false;
 
   if(verificarValoresArmazenados()){
     echo "";

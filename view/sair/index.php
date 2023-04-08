@@ -1,10 +1,11 @@
 <?php
+  session_start();
 
-  if(isset($_SESSION)){
+  try{
     session_destroy();
+    unset($_SESSION);  
+    echo "<script>window.location.href='../login/'</script>";
+  }catch(Exception $e){
+    echo $e;
   }
-  unset($_SESSION);
-
-  echo "<script>window.location.href='../login/'</script>";
-
 ?>
