@@ -20,10 +20,10 @@ class LoginDao{
         return $stmt;
         
       }catch(Exception $e){
-        echo $e;
+        // echo $e;
         return null;
       }catch(PDOException $e){
-        echo $e;
+        // echo $e;
         return null;
       }
       
@@ -45,10 +45,10 @@ class LoginDao{
         return $stmt;
         
       }catch(Exception $e){
-        echo $e;
+        // echo $e;
         return null;
       }catch(PDOException $e){
-        echo $e;
+        // echo $e;
         return null;
       }
       
@@ -73,10 +73,10 @@ class LoginDao{
         return true;
 
       }catch(Exception $e){
-        echo $e;
+        // echo $e;
         return false;
       }catch(PDOException $e){
-        echo $e;
+        // echo $e;
         return false;
       }
     }else{

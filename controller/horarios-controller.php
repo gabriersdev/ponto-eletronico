@@ -20,7 +20,7 @@ class HorariosController{
   }
 }
 
-$teste = new HorariosController();
+// $teste = new HorariosController();
 
 // foreach($teste -> horario(1, 1) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
 //   print_r($value);
