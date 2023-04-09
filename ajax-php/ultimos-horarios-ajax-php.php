@@ -17,9 +17,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     $quantidade = filter_input(INPUT_POST, 'quantidade', FILTER_SANITIZE_SPECIAL_CHARS);
 
     foreach($UltimosHorariosController -> registrosUsuariosLimite(1, $quantidade) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
-      $dia = htmlentities($value['data_usuario_registro']);
-      $entrada = htmlentities($value['hora_entrada_usuario_registro']);
-      $saida = htmlentities($value['hora_saida_usuario_registro']);
+      $dia = !empty($value['data_usuario_registro']) ? htmlentities($value['data_usuario_registro']) : '';      
+      $entrada = !empty($value['hora_entrada_usuario_registro']) ? htmlentities($value['hora_entrada_usuario_registro']) : '';
+      $saida = !empty($value['hora_saida_usuario_registro']) ? htmlentities($value['hora_saida_usuario_registro']) : '';
       $saida_almoco = !empty($value['hora_saida_usuario_almoco']) ? htmlentities($value['hora_saida_usuario_almoco']) : '';
       $retorno_almoco = !empty($value['hora_retorno_usuario_almoco']) ? htmlentities($value['hora_retorno_usuario_almoco']) : '';
       
@@ -42,9 +42,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     $fim = filter_input(INPUT_POST, 'fim', FILTER_SANITIZE_SPECIAL_CHARS);
 
     foreach($UltimosHorariosController -> registrosUsuariosPeriodos(1, $inicio, $fim) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
-      $dia = htmlentities($value['data_usuario_registro']);
-      $entrada = htmlentities($value['hora_entrada_usuario_registro']);
-      $saida = htmlentities($value['hora_saida_usuario_registro']);
+      $dia = !empty($value['data_usuario_registro']) ? htmlentities($value['data_usuario_registro']) : '';      
+      $entrada = !empty($value['hora_entrada_usuario_registro']) ? htmlentities($value['hora_entrada_usuario_registro']) : '';
+      $saida = !empty($value['hora_saida_usuario_registro']) ? htmlentities($value['hora_saida_usuario_registro']) : '';
       $saida_almoco = !empty($value['hora_saida_usuario_almoco']) ? htmlentities($value['hora_saida_usuario_almoco']) : '';
       $retorno_almoco = !empty($value['hora_retorno_usuario_almoco']) ? htmlentities($value['hora_retorno_usuario_almoco']) : '';
       
