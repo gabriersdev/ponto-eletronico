@@ -1,4 +1,3 @@
-
 CREATE SCHEMA IF NOT EXISTS ponto_eletronico CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci';
 USE ponto_eletronico;
 
@@ -43,7 +42,7 @@ CREATE FUNCTION fn_verifica_dados(email VARCHAR(100), senha VARCHAR(45)) RETURNS
 	BEGIN
 		DECLARE id BIGINT;
         DECLARE existe BIT DEFAULT 0;
-        SELECT id_usuario INTO id FROM usuarios WHERE email_usuario = email AND senha_usuario = senha;
+        SELECT id_usuario AS id INTO id FROM usuarios  WHERE email_usuario = email AND senha_usuario = senha;
         
         IF isnull(id) THEN
 			SET existe = 0;
@@ -59,19 +58,22 @@ DELIMITER $
 CREATE FUNCTION fn_consulta_id(nome VARCHAR(45)) RETURNS BIGINT
 	BEGIN
 		DECLARE id BIGINT;
-        SELECT id_usuario FROM usuarios WHERE nome_usuario = nome INTO id;
+        SELECT id_usuario INTO id FROM usuarios WHERE nome_usuario = nome;
         RETURN id;
     END $
 DELIMITER ;
 
 DELIMITER $
-CREATE FUNCTION fn_consulta_id_email(email VARCHAR(100)) RETURNS BIGINT
+CREATE FUNCTION fn_consulta_id_email(email VARCHAR(100), senha VARCHAR(45)) RETURNS BIGINT
 	BEGIN
 		DECLARE id_usuario_email BIGINT;
-        SELECT id_usuario INTO id_usuario_email FROM usuarios WHERE email_usuario = email;
+        SELECT id_usuario INTO id_usuario_email FROM usuarios WHERE email_usuario = email AND senha_usuario = senha;
         RETURN id_usuario_email;
     END $
 DELIMITER ;
+
+DROP FUNCTION IF EXISTS fn_consulta_id_email;
+SELECT  fn_consulta_id_email('administracao@mail.com', '123456ABC');
 
 DELIMITER $
 CREATE FUNCTION fn_consulta_letras_nome(id BIGINT) RETURNS VARCHAR(2)
@@ -102,6 +104,26 @@ CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`logs_acessos_usuarios` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+DELIMITER $
+	CREATE PROCEDURE pd_logs_acessos_usuarios_insert(codigo BIGINT, sistema VARCHAR(45), local_acesso VARCHAR(45), ip VARCHAR(45), dispositivo VARCHAR(45))
+    BEGIN
+		START TRANSACTION;
+			INSERT INTO `ponto_eletronico`.`logs_acessos_usuarios`
+			(`cod_usuario_log`,
+			`sistema_op_log`,
+			`local_log`,
+			`ip_log`,
+			`dispositivo_log`)
+			VALUES
+			(codigo,
+			sistema,
+			local_acesso,
+			ip,
+			dispositivo);
+        COMMIT;
+    END $
+DELIMITER ;
+
 -- -----------------------------------------------------
 -- Table `ponto_eletronico`.`usuarios_registros`
 -- -----------------------------------------------------
@@ -122,8 +144,6 @@ CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`usuarios_registros` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DROP PROCEDURE IF EXISTS pd_usuarios_registros_insert;
-
 DELIMITER $
 	CREATE PROCEDURE pd_usuarios_registros_insert(codigo BIGINT, data_registro DATE, entrada_registro TIME, saida_registro TIME, saida_almoco TIME, retorno_almoco TIME)
     BEGIN
@@ -143,6 +163,38 @@ DELIMITER $
 			saida_almoco,
 			retorno_almoco);
         COMMIT;
+    END $
+DELIMITER ;
+
+DELIMITER $
+  CREATE PROCEDURE pd_usuarios_registros_select(cod_usuario BIGINT, num_ultimos_dias INT)
+  BEGIN
+    SELECT 
+      `usuarios_registros`.`data_usuario_registro`,
+      `usuarios_registros`.`hora_entrada_usuario_registro`,
+      `usuarios_registros`.`hora_saida_usuario_registro`,
+      `usuarios_registros`.`hora_saida_usuario_almoco`,
+      `usuarios_registros`.`hora_retorno_usuario_almoco`
+    FROM `ponto_eletronico`.`usuarios_registros`
+    WHERE cod_usuario = `usuarios_registros`.`cod_usuario_registro`
+    ORDER BY `usuarios_registros`.`data_usuario_registro` DESC
+    LIMIT num_ultimos_dias;
+  END $
+DELIMITER ;
+
+DELIMITER $
+	CREATE PROCEDURE pd_usuarios_registros_select_periodo(inicio DATE, fim DATE, cod_usuario BIGINT)
+    BEGIN
+		SELECT 
+			`usuarios_registros`.`data_usuario_registro`,
+			`usuarios_registros`.`hora_entrada_usuario_registro`,
+			`usuarios_registros`.`hora_saida_usuario_registro`,
+			`usuarios_registros`.`hora_saida_usuario_almoco`,
+			`usuarios_registros`.`hora_retorno_usuario_almoco`
+		FROM `ponto_eletronico`.`usuarios_registros`
+        WHERE `usuarios_registros`.`data_usuario_registro` >= inicio AND `usuarios_registros`.`data_usuario_registro` <= fim AND cod_usuario_registro = cod_usuario
+        ORDER BY `usuarios_registros`.`data_usuario_registro` DESC
+        LIMIT 50;
     END $
 DELIMITER ;
 
@@ -202,6 +254,18 @@ CREATE TRIGGER tg_usuarios_registros_insert
     END $
 DELIMITER ;
 
+INSERT INTO `ponto_eletronico`.`usuarios_registros`
+(`id_usuario_registro`,
+`cod_usuario_registro`,
+`data_usuario_registro`,
+`hora_entrada_usuario_registro`,
+`hora_saida_usuario_registro`,
+`hora_saida_usuario_almoco`,
+`hora_retorno_usuario_almoco`)
+VALUES
+(1, 1, 20230104, 090000, 140000, NULL, NULL);
+
+
 -- -----------------------------------------------------
 -- Table `ponto_eletronico`.`usuarios_horarios`
 -- -----------------------------------------------------
@@ -220,6 +284,36 @@ CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`usuarios_horarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+DELIMITER $
+	CREATE PROCEDURE usuarios_horarios_select_registros(cod_usuario BIGINT)
+    BEGIN
+		SELECT 
+		`usuarios_horarios`.`dia_semana_usuario_horario`,
+		`usuarios_horarios`.`hora_entrada_usuario_horario`,
+		`usuarios_horarios`.`hora_saida_usuario_horario`,
+		`usuarios_horarios`.`hora_saida_usuario_almoco`,
+		`usuarios_horarios`.`hora_retorno_usuario_almoco`
+		FROM `ponto_eletronico`.`usuarios_horarios`
+        WHERE `usuarios_horarios`.`cod_usuario_horario` = cod_usuario
+        ORDER BY `usuarios_horarios`.`dia_semana_usuario_horario` ASC;
+    END $
+DELIMITER ;
+
+DELIMITER $
+	CREATE PROCEDURE usuarios_horarios_select_registro_dia(cod_usuario BIGINT, dia_semana CHAR(1) )
+    BEGIN
+		SELECT 
+        `usuarios_horarios`.`dia_semana_usuario_horario`,
+		`usuarios_horarios`.`hora_entrada_usuario_horario`,
+		`usuarios_horarios`.`hora_saida_usuario_horario`,
+		`usuarios_horarios`.`hora_saida_usuario_almoco`,
+		`usuarios_horarios`.`hora_retorno_usuario_almoco`
+		FROM `ponto_eletronico`.`usuarios_horarios`
+        WHERE `usuarios_horarios`.`cod_usuario_horario` = cod_usuario
+        AND `usuarios_horarios`.`dia_semana_usuario_horario` = dia_semana;
+    END $
+DELIMITER ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
