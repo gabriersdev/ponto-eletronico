@@ -129,6 +129,9 @@ import { verificarODia, retornarUltimosRegistros } from '../script.js';
 
       const inicio = $('#data-inicio').val();
       const fim = $('#data-fim').val();
+      
+      const feedbackInicio = document.querySelector('[data-input-group="data-inicio"]').parentElement.querySelector('.feedback-dados-inseridos');
+      const feedbackFim = document.querySelector('[data-input-group="data-fim"]').parentElement.querySelector('.feedback-dados-inseridos');
 
       if(inicio !== fim){
         const inicioValido = verificarDataValida(inicio);
@@ -136,30 +139,34 @@ import { verificarODia, retornarUltimosRegistros } from '../script.js';
 
         if(inicioValido.valido && fimValido.valido){
           if(inicioValido.valido){
-            const feedback = document.querySelector('[data-input-group="data-inicio"]').parentElement.querySelector('.feedback-dados-inseridos');
-            !isEmpty(feedback) ? !feedback.classList.contains('none') ? feedback.classList.add('none') : '' : '';
+            !isEmpty(feedbackInicio) ? !feedbackInicio.classList.contains('none') ? feedbackInicio.classList.add('none') : '' : '';
           }
           
           if(fimValido.valido){
-            const feedback = document.querySelector('[data-input-group="data-fim"]').parentElement.querySelector('.feedback-dados-inseridos');
-            !isEmpty(feedback) ? !feedback.classList.contains('none') ? feedback.classList.add('none') : '' : '';
+            !isEmpty(feedbackFim) ? !feedbackFim.classList.contains('none') ? feedbackFim.classList.add('none') : '' : '';
           }
 
           pesquisarRegistros(inicio, fim);
         }else{
 
           if(!inicioValido.valido){
-            const feedback = document.querySelector('[data-input-group="data-inicio"]').parentElement.querySelector('.feedback-dados-inseridos');
-            !isEmpty(feedback) ? feedback.classList.contains('none') ? feedback.classList.remove('none') : '' : '';
-            !isEmpty(feedback) ? feedback.innerHTML = inicioValido.mensagem : '';
+            !isEmpty(feedbackInicio) ? feedbackInicio.classList.contains('none') ? feedbackInicio.classList.remove('none') : '' : '';
+            !isEmpty(feedbackInicio) ? feedbackInicio.innerHTML = inicioValido.mensagem : '';
           }
           
           if(!fimValido.valido){
-            const feedback = document.querySelector('[data-input-group="data-fim"]').parentElement.querySelector('.feedback-dados-inseridos');
-            !isEmpty(feedback) ? feedback.classList.contains('none') ? feedback.classList.remove('none') : '' : '';
-            !isEmpty(feedback) ? feedback.innerHTML = fimValido.mensagem : '';
+            !isEmpty(feedbackFim) ? feedbackFim.classList.contains('none') ? feedbackFim.classList.remove('none') : '' : '';
+            !isEmpty(feedbackFim) ? feedbackFim.innerHTML = fimValido.mensagem : '';
           }
         }
+      }else{
+        !isEmpty(feedbackInicio) ? feedbackInicio.classList.contains('none') ? feedbackInicio.classList.remove('none') : '' : '';
+        !isEmpty(feedbackInicio) ? feedbackInicio.innerHTML = 'Datas iguais' : '';
+        !isEmpty(feedbackInicio) ? feedbackInicio.parentElement.querySelector('input').focus() : '';
+
+        !isEmpty(feedbackFim) ? feedbackFim.classList.contains('none') ? feedbackFim.classList.remove('none') : '' : '';
+        !isEmpty(feedbackFim) ? feedbackFim.innerHTML = 'Datas iguais' : '';
+        // !isEmpty(feedbackFim) ? feedbackFim.parentElement.querySelector('input').focus() : '';
       }
     })
   });  
