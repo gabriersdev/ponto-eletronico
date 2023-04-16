@@ -16,21 +16,43 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
     $retorno['dados'] = array();
     $quantidade = filter_input(INPUT_POST, 'quantidade', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    foreach($UltimosHorariosController -> registrosUsuariosLimite(1, $quantidade) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
-      $dia = !empty($value['data_usuario_registro']) ? htmlentities($value['data_usuario_registro']) : '';      
-      $entrada = !empty($value['hora_entrada_usuario_registro']) ? htmlentities($value['hora_entrada_usuario_registro']) : '';
-      $saida = !empty($value['hora_saida_usuario_registro']) ? htmlentities($value['hora_saida_usuario_registro']) : '';
-      $saida_almoco = !empty($value['hora_saida_usuario_almoco']) ? htmlentities($value['hora_saida_usuario_almoco']) : '';
-      $retorno_almoco = !empty($value['hora_retorno_usuario_almoco']) ? htmlentities($value['hora_retorno_usuario_almoco']) : '';
-      
-      array_push($retorno['dados'], 
-      array(
-        "dia_semana_usuario_horario" => $dia, 
-        "hora_entrada_usuario_horario" => $entrada, 
-        "hora_saida_usuario_horario" => $saida, 
-        "hora_saida_usuario_almoco" => $saida_almoco, 
-        "hora_retorno_usuario_almoco" => $retorno_almoco)
-      );
+    if(empty($_POST['filtro'])){
+      foreach($UltimosHorariosController -> registrosUsuariosLimite(1, $quantidade) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
+        $dia = !empty($value['data_usuario_registro']) ? htmlentities($value['data_usuario_registro']) : '';      
+        $entrada = !empty($value['hora_entrada_usuario_registro']) ? htmlentities($value['hora_entrada_usuario_registro']) : '';
+        $saida = !empty($value['hora_saida_usuario_registro']) ? htmlentities($value['hora_saida_usuario_registro']) : '';
+        $saida_almoco = !empty($value['hora_saida_usuario_almoco']) ? htmlentities($value['hora_saida_usuario_almoco']) : '';
+        $retorno_almoco = !empty($value['hora_retorno_usuario_almoco']) ? htmlentities($value['hora_retorno_usuario_almoco']) : '';
+        
+        array_push($retorno['dados'], 
+        array(
+          "dia_semana_usuario_horario" => $dia, 
+          "hora_entrada_usuario_horario" => $entrada, 
+          "hora_saida_usuario_horario" => $saida, 
+          "hora_saida_usuario_almoco" => $saida_almoco, 
+          "hora_retorno_usuario_almoco" => $retorno_almoco)
+        );
+      }
+    }else{
+      $filtro = filter_input(INPUT_POST, 'filtro', FILTER_SANITIZE_SPECIAL_CHARS);
+      $retorno['entrada'] = $filtro;
+
+      foreach($UltimosHorariosController -> registrosUsuariosFiltro(1, $quantidade, $filtro) -> fetchAll(PDO::FETCH_ASSOC) as $key => $value){
+        $dia = !empty($value['data_usuario_registro']) ? htmlentities($value['data_usuario_registro']) : '';      
+        $entrada = !empty($value['hora_entrada_usuario_registro']) ? htmlentities($value['hora_entrada_usuario_registro']) : '';
+        $saida = !empty($value['hora_saida_usuario_registro']) ? htmlentities($value['hora_saida_usuario_registro']) : '';
+        $saida_almoco = !empty($value['hora_saida_usuario_almoco']) ? htmlentities($value['hora_saida_usuario_almoco']) : '';
+        $retorno_almoco = !empty($value['hora_retorno_usuario_almoco']) ? htmlentities($value['hora_retorno_usuario_almoco']) : '';
+        
+        array_push($retorno['dados'], 
+        array(
+          "dia_semana_usuario_horario" => $dia, 
+          "hora_entrada_usuario_horario" => $entrada, 
+          "hora_saida_usuario_horario" => $saida, 
+          "hora_saida_usuario_almoco" => $saida_almoco, 
+          "hora_retorno_usuario_almoco" => $retorno_almoco)
+        );
+      }
     }
 
   }else if(!empty($_POST['solicitacao']) && !empty($_POST['inicio']) && !empty($_POST['fim'])){

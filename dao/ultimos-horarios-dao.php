@@ -55,6 +55,30 @@ class UltimosHorariosDAO{
       return null;
     }
   }
+
+  public function registrosUsuariosFiltro($codigo_usuario, $quantidade_ultimos_dias, $filtro){
+    if(!empty($codigo_usuario) && !empty($quantidade_ultimos_dias) && !empty($filtro)){
+      try{
+        $requisicao = $this -> conexao;
+        $stmt = $requisicao -> conectar() -> prepare("CALL pd_usuarios_registros_filtro_select(:codigo, :quantidade, :filtro)");
+        $stmt -> bindValue(':codigo', $codigo_usuario);
+        $stmt -> bindValue(':quantidade', $quantidade_ultimos_dias);
+        $stmt -> bindValue(':filtro', $filtro);
+        $stmt -> execute();
+
+        return $stmt;
+
+      }catch(Exception $e){
+        echo $e;
+        return null;
+      }catch(PDOException $e){
+        echo $e;
+        return null;
+      }
+    }else{
+      return null;
+    }
+  }
 }
 
 ?>

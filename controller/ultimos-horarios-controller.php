@@ -18,5 +18,10 @@ class UltimosHorariosController{
   public function registrosUsuariosPeriodos($codigo_usuario, $inicio, $fim){
     return $this -> UltimosHorariosDAO -> registrosUsuariosPeriodos($codigo_usuario, $inicio, $fim);
   }
+
+  public function registrosUsuariosFiltro($codigo_usuario, $quantidade_ultimos_dias, $filtro){
+    return $this -> UltimosHorariosDAO -> registrosUsuariosFiltro($codigo_usuario, $quantidade_ultimos_dias, $filtro);
+  }
 }
+
 ?>

@@ -1,6 +1,8 @@
 "use strict";
 
+import { conteudos } from "./módulos/conteudos.js";
 import { atualizarDatas, capitalize, escutaClickRecarregaPagina, isEmpty, swalAlert, formatarData, resumirHorario, diferencaEntreDatas } from "./módulos/utilitarios.js";
+import { instruirDesacionarBusca } from "./scripts/ultimos-registros.js";
 
 function atribuirLinks(){
   const linkElementos = document.querySelectorAll('[data-link]');
@@ -147,60 +149,6 @@ const converterParaMesBRL = (numero) => {
   return mes;
 }
 
-function escutaSelecaoDropdown(){
-  const dropdowns = document.querySelectorAll('.dropdown-menu');
-
-  if(!isEmpty(dropdowns)){
-    if(Array.isArray(dropdowns) || typeof dropdowns == 'object'){
-      dropdowns.forEach(dropdown => {
-        acao(dropdown);
-      })
-    }else{
-      acao(dropdowns[0]);
-    }
-  }
-
-  function acao(dropdown){
-    dropdown.addEventListener('click', (evento) => {
-      evento.preventDefault();
-      if(evento.target.tagName.toLowerCase() == 'a'){
-        desmarcarTodasOpcoesDropdown(dropdown);
-        marcarOpcaoSelecionada(evento.target);
-        acionarBusca(dropdown);
-      }
-    })
-  }
-
-  function acionarBusca(dropdown){
-    const botao = dropdown.parentElement.querySelector('[data-acao="btn-dropdown-toggle"]');
-    if(!isEmpty(botao)){
-      botao.classList.contains('dropdown-toggle') ? botao.classList.remove('dropdown-toggle') : ''
-      const width = botao.offsetWidth;
-      botao.innerHTML = `<span class="spinner-border text-light" role="status"></span>`;
-      botao.style.width = `${width}px`;
-    }
-  }
-
-  function marcarOpcaoSelecionada(opcao){
-    opcao.classList.add('selecionado');
-  }
-
-  function desmarcarTodasOpcoesDropdown(dropdown){
-    const opcoes = dropdown.querySelectorAll('a.dropdown-item');
-
-    if(!isEmpty(opcoes)){
-      if(Array.isArray(opcoes) || typeof opcoes == 'object'){
-        opcoes.forEach(opcao => {
-          opcao.classList.contains('selecionado') ? opcao.classList.remove('selecionado') : '';
-        })
-      }else{
-        opcoes[0].classList.contains('selecionado') ? opcoes[0].classList.remove('selecionado') : '';
-      }
-    }
-
-  }
-}
-
 function escutaClickLinkSair(){
   const link = document.querySelector('[data-link="sair"]');
   if(!isEmpty(link)){
@@ -211,16 +159,20 @@ function escutaClickLinkSair(){
   }
 }
 
-function retornarUltimosRegistros(quantidade){
+async function retornarUltimosRegistros(quantidade, filtro){
   if(isEmpty(quantidade)){
     return null;
   }
 
-  $.ajax({
+  if(isEmpty(filtro)){
+    filtro = null;
+  }
+
+  await $.ajax({
     method: "POST",
     url: "../../ajax-php/ultimos-horarios-ajax-php.php",
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-    data: {solicitacao: 'true', quantidade: quantidade},
+    data: {solicitacao: 'true', quantidade: quantidade, filtro: filtro},
     dataType: 'json',
     encode: true,
   })
@@ -228,7 +180,6 @@ function retornarUltimosRegistros(quantidade){
   .done(function(msg){
     if(!isEmpty(msg) && !isEmpty(msg.mensagem)){
       const card_body = document.querySelector('[data-conteudo="registros"]');
-      // console.log(msg);
       switch(msg.mensagem.toLowerCase()){
         case 'dados vazios':
         swalAlert('error', 'error', 'Dados inválidos', 'Os dados não podem estar vazios e devem corresponder ao solicitado', 'Erro: 0129EM', null);
@@ -249,10 +200,14 @@ function retornarUltimosRegistros(quantidade){
             
             const checked = !isEmpty(entrada) && !isEmpty(saida) && !isEmpty(saida_almoco) && !isEmpty(retorno_almoco) || !isEmpty(entrada) && !isEmpty(saida) && dia == 'Sábado' ? 'checked' : '';
 
-            if(!isEmpty(entrada) && !isEmpty(saida)){
-              card_body.querySelector('tbody').innerHTML += `<tr><td scope="row" colspan="2"><div class="input-group"><div class="input-group-text"><input class="form-check-input mt-0" type="checkbox" ${checked} disabled></div><input type="text" class="form-control" value="${dia}, ${formatarData(element.dia_semana_usuario_horario)}" disabled></div></td><td data-conteudo="horario-entrada">${resumirHorario(entrada)}</td><td data-conteudo="horario-saida">${resumirHorario(saida)}</td><td data-conteudo="tempo-trabalhado"></td></tr>`;
-            }else{
-              card_body.querySelector('tbody').innerHTML += `<tr><td scope="row" colspan="2"><div class="input-group"><div class="input-group-text"><input class="form-check-input mt-0" type="checkbox" ${checked} disabled></div><input type="text" class="form-control" value="${dia}, ${formatarData(element.dia_semana_usuario_horario)}" disabled></div></td><td data-conteudo="horario-entrada">00:00</td><td data-conteudo="horario-saida">00:00</td><td>0:00:00</td></tr>`;
+            try{
+              if(!isEmpty(entrada) && !isEmpty(saida)){
+                card_body.querySelector('tbody').innerHTML += `<tr><td scope="row" colspan="2"><div class="input-group"><div class="input-group-text"><input class="form-check-input mt-0" type="checkbox" ${checked} disabled></div><input type="text" class="form-control" value="${dia}, ${formatarData(element.dia_semana_usuario_horario)}" disabled></div></td><td data-conteudo="horario-entrada">${resumirHorario(entrada)}</td><td data-conteudo="horario-saida">${resumirHorario(saida)}</td><td data-conteudo="tempo-trabalhado"></td></tr>`;
+              }else{
+                card_body.querySelector('tbody').innerHTML += `<tr><td scope="row" colspan="2"><div class="input-group"><div class="input-group-text"><input class="form-check-input mt-0" type="checkbox" ${checked} disabled></div><input type="text" class="form-control" value="${dia}, ${formatarData(element.dia_semana_usuario_horario)}" disabled></div></td><td data-conteudo="horario-entrada">00:00</td><td data-conteudo="horario-saida">00:00</td><td>0:00:00</td></tr>`;
+              }
+            }catch(erro){
+
             }
 
             setInterval(() => {
@@ -291,15 +246,21 @@ function retornarUltimosRegistros(quantidade){
         break;
       }
     }
+
+    return true;
   })
   
   .fail(function(erro){
     console.log(erro)
-    // swalAlert('error', 'error', 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI', null);
+    swalAlert('error', 'error', 'Ocorreu um erro no requerimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI', null);
+    return false;
+  })
+
+  .always(function(){
+    instruirDesacionarBusca(true);
   })
 }
 
-escutaSelecaoDropdown();
 escutaClickLinkSair();
 atualizarDatas();
 
