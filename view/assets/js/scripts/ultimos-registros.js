@@ -48,7 +48,11 @@ import { verificarODia, retornarUltimosRegistros } from '../script.js';
 
               const checked = !isEmpty(entrada) && !isEmpty(saida) && !isEmpty(saida_almoco) && !isEmpty(retorno_almoco) || !isEmpty(entrada) && !isEmpty(saida) && dia == 'Sábado' ? 'checked' : '';
               
-              card_body.querySelector('tbody').innerHTML += `<tr><td scope="row" colspan="2"><div class="input-group"><div class="input-group-text"><input class="form-check-input mt-0" type="checkbox" ${checked} disabled></div><input type="text" class="form-control" value="${dia}, ${formatarData(element.dia_semana_usuario_horario)}" disabled></div></td><td data-conteudo="horario-entrada">${resumirHorario(entrada)}</td><td data-conteudo="horario-saida">${resumirHorario(saida)}</td><td data-conteudo="tempo-trabalhado">0:00:00</td></tr>`;
+              if(!isEmpty(entrada) && !isEmpty(saida)){
+                card_body.querySelector('tbody').innerHTML += `<tr><td scope="row" colspan="2"><div class="input-group"><div class="input-group-text"><input class="form-check-input mt-0" type="checkbox" ${checked} disabled></div><input type="text" class="form-control" value="${dia}, ${formatarData(element.dia_semana_usuario_horario)}" disabled></div></td><td data-conteudo="horario-entrada">${resumirHorario(entrada)}</td><td data-conteudo="horario-saida">${resumirHorario(saida)}</td><td data-conteudo="tempo-trabalhado"></td></tr>`;
+              }else{
+                card_body.querySelector('tbody').innerHTML += `<tr><td scope="row" colspan="2"><div class="input-group"><div class="input-group-text"><input class="form-check-input mt-0" type="checkbox" ${checked} disabled></div><input type="text" class="form-control" value="${dia}, ${formatarData(element.dia_semana_usuario_horario)}" disabled></div></td><td data-conteudo="horario-entrada">00:00</td><td data-conteudo="horario-saida">00:00</td><td>0:00:00</td></tr>`;
+              }
 
               setInterval(() => {
                 const tempos = document.querySelectorAll('[data-conteudo="tempo-trabalhado"]');
@@ -125,8 +129,6 @@ import { verificarODia, retornarUltimosRegistros } from '../script.js';
 
       const inicio = $('#data-inicio').val();
       const fim = $('#data-fim').val();
-
-      console.log(inicio, fim)
 
       if(inicio !== fim){
         const inicioValido = verificarDataValida(inicio);
