@@ -144,6 +144,7 @@ CREATE TABLE IF NOT EXISTS `ponto_eletronico`.`usuarios_registros` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 DELIMITER $
 	CREATE PROCEDURE pd_usuarios_registros_insert(codigo BIGINT, data_registro DATE, entrada_registro TIME, saida_registro TIME, saida_almoco TIME, retorno_almoco TIME)
     BEGIN
@@ -180,6 +181,39 @@ DELIMITER $
     ORDER BY `usuarios_registros`.`data_usuario_registro` DESC
     LIMIT num_ultimos_dias;
   END $
+DELIMITER ;
+
+DELIMITER $
+  CREATE PROCEDURE pd_usuarios_registros_select_asc(cod_usuario BIGINT, num_ultimos_dias INT)
+  BEGIN
+    SELECT 
+      `usuarios_registros`.`data_usuario_registro`,
+      `usuarios_registros`.`hora_entrada_usuario_registro`,
+      `usuarios_registros`.`hora_saida_usuario_registro`,
+      `usuarios_registros`.`hora_saida_usuario_almoco`,
+      `usuarios_registros`.`hora_retorno_usuario_almoco`
+    FROM `ponto_eletronico`.`usuarios_registros`
+    WHERE cod_usuario = `usuarios_registros`.`cod_usuario_registro`
+    ORDER BY `usuarios_registros`.`data_usuario_registro` ASC
+    LIMIT num_ultimos_dias;
+  END $
+DELIMITER ;
+
+DELIMITER $
+	CREATE PROCEDURE pd_usuarios_registros_filtro_select(cod_usuario BIGINT, num_ultimos_dias INT, filtro TEXT)
+    BEGIN
+		CASE 
+		WHEN LOWER(filtro) = 'últimos 30 dias' THEN 
+			CALL pd_usuarios_registros_select_periodo(DATE_SUB(CURDATE(), INTERVAL 30 DAY), CURDATE(), cod_usuario);
+            
+		WHEN LOWER(filtro) = 'mais recentes' THEN
+			CALL pd_usuarios_registros_select(cod_usuario, num_ultimos_dias);
+        
+        WHEN LOWER(filtro) = 'mais antigos' THEN
+			CALL pd_usuarios_registros_select_asc(cod_usuario, num_ultimos_dias);
+        
+        END CASE;
+    END $
 DELIMITER ;
 
 DELIMITER $
