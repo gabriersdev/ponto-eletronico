@@ -2,30 +2,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- 
-    <meta name="keywords" content="#">
-    <meta name="author" content="Gabriel Ribeiro">
-    <meta property="og:title" content="#">
-    <meta property="og:description" content="#">
-    <meta property="og:url" content="#">
-    <meta property="og:image" content="#">
-    <meta property="og:image:secure_url" content="#"> 
-    <meta property="og:image:type" content="image/png"> 
-    <meta property="og:image:width" content="400"> 
-    <meta property="og:image:height" content="300"> 
-  -->
+  <meta name="keywords" content="#">
+  <meta name="author" content="Gabriel Ribeiro">
+  <meta property="og:title" content="#">
+  <meta property="og:description" content="#">
+  <meta property="og:url" content="#">
+  <meta property="og:image" content="#">
+  <meta property="og:image:secure_url" content="#"> 
+  <meta property="og:image:type" content="image/png"> 
+  <meta property="og:image:width" content="400"> 
+  <meta property="og:image:height" content="300"> 
   
-  <!-- 
-    <meta http-equiv="Content-Security-Policy" 
-    content="default-src 'self' 'unsafe-inline'; 
-    style-src 'self' 'unsafe-inline'; 
-    style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' 'unsafe-inline'; 
-    font-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://cdn.jsdelivr.net/; 
-    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://code.jquery.com/ https://cdnjs.cloudflare.com/; 
-    frame-src 'self' 'unsafe-inline';
-    connect-src 'self' 'unsafe-inline';">   
-  -->
+  <meta http-equiv="Content-Security-Policy" 
+  content="default-src 'self' 'unsafe-inline'; 
+  style-src 'self' 'unsafe-inline' data:; 
+  style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com data:;
+  img-src 'self' 'unsafe-inline' data:; 
+  font-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://cdn.jsdelivr.net/ data:; 
+  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/ https://code.jquery.com/ https://cdnjs.cloudflare.com/; 
+  frame-src 'self' 'unsafe-inline';
+  connect-src 'self' 'unsafe-inline';">   
   
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/frameworks/highlights-A11Y-dark.css">
