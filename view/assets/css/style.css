@@ -20,6 +20,10 @@ body{
   font-family: 'Inter', sans-serif;
 }
 
+main.principal{
+  height: calc(100vh - 100px);
+}
+
 .box-desabilitado{
   box-shadow: none !important;
   outline: none !important;
