@@ -232,7 +232,7 @@ async function retornarUltimosRegistros(quantidade, filtro){
 
           });
         }else{
-          if(!isEmpty(conteudos.feedback.nenhum_horario)){
+          if(!isEmpty(conteudos.feedback.nenhum_horario) && card_body !== null){
             card_body.innerHTML = conteudos.feedback.nenhum_horario;
             escutaClickRecarregaPagina();
           }
