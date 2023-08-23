@@ -50,7 +50,9 @@ function acaoSelecaoDropdown(instrucao){
   
   function limparSecaoResultados(){
     const card_body = document.querySelector('[data-conteudo="registros"]');
-    card_body.querySelector('tbody').innerHTML = '';
+    if(!isEmpty(card_body.querySelector('tbody'))){
+      card_body.querySelector('tbody').innerHTML = '';
+    }
   }
 
   function desacionarBusca(dropdown, opcaoSelecionada){
