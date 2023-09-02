@@ -46,6 +46,12 @@ function atribuirLinks(){
     $('[data-bs-toggle="popover"]').popover();  
   });
 
+  window.addEventListener('load', function(){
+    this.setTimeout(() => {
+      $('.overlay').hide();
+    }, 250)
+  })
+
   escutaClickRecarregaPagina();  
   atribuirLinks();
 })();
