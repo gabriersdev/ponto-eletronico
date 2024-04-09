@@ -40,14 +40,14 @@
                 <div class="row">
                   <div class="col">
                     <div class="input-group mb-3" data-input-group="data-inicio">
-                      <label for="data-inicio" class="btn btn-outline-primary input-group-text" id="basic-addon2">Início</label>
+                      <label for="data-inicio" class="input-group-text" id="basic-addon2">Início</label>
                       <input type="date" id="data-inicio" name="data-inicio" class="form-control" aria-describedby="basic-addon2" required>
                     </div>
                     <div class="alert alert-warning feedback-dados-inseridos none" role="alert"></div>
                   </div>
                   <div class="col">
                     <div class="input-group mb-3" data-input-group="data-fim">
-                      <label class="btn btn-outline-secondary input-group-text" for="data-fim" id="basic-addon2">Fim</label>
+                      <label class="input-group-text" for="data-fim" id="basic-addon2">Fim</label>
                       <input type="date" id="data-fim" name="data-fim" class="form-control" aria-describedby="basic-addon2" required>
                     </div>
                     <div class="alert alert-warning feedback-dados-inseridos none" role="alert"></div>

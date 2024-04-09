@@ -111,6 +111,11 @@ ul li a.selecionado::after{
   text-rendering: auto;
 }
 
+.swal2-html-container{
+  font-size: 1.25rem !important;
+  line-height: 1.25 !important;
+}
+
 @media screen and (max-width: 410px) {
   .table .input-group .form-control{
     display: none;
