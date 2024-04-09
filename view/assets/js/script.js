@@ -56,6 +56,10 @@ function atribuirLinks(){
   atribuirLinks();
 })();
 
+window.reload = () => {
+  window.location.reload();
+}
+
 function marcarPaginaNoCabecalho(nome){
   if(!isEmpty(nome)){
     

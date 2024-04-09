@@ -212,8 +212,13 @@ function diferencaEntreDatas(inicio, fim, condicao){
     break;
   }
   
-  duracao = moment.duration(ms);
-  return {horas: Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss"), dias: duracao.days};
+  if (ms > 0) {
+    duracao = moment.duration(ms);
+    return {horas: Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss"), dias: duracao.days};
+  } else {
+    return {horas: '00:00:00', dias: 0};
+  }
+
 }
 
 function formatarData(input){

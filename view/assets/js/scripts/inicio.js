@@ -78,6 +78,7 @@ import { conteudos } from "../módulos/conteudos.js";
           const card_body = document.querySelector('[data-conteudo="horarios-hoje"]');
           
           if(!isEmpty(msg.dados)){
+            console.log(msg.dados);
             msg.dados.forEach(element => {
               const dia = capitalize(verificarODia(parseInt(element.dia_semana_usuario_horario)));
               const entrada = element.hora_entrada_usuario_horario;
@@ -103,7 +104,7 @@ import { conteudos } from "../módulos/conteudos.js";
                   
                   const tempoDecorrido = cronometrar(entrada, moment(), 'crescente');
                   const tempoRestante = cronometrar(entrada, moment(), 'decrescente').split('').includes('-') ? '0:00:00' : cronometrar(entrada, moment(), 'decrescente');
-                  
+
                   card_body.querySelector('[data-conteudo="tempo-decorrido-horario"]').innerHTML = `&nbsp;${tempoDecorrido}`;
                   card_body.querySelector('[data-conteudo="tempo-restante-horario"]').innerHTML = `&nbsp;${tempoRestante}`;
                 }, 1000);

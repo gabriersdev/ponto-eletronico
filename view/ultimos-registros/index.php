@@ -114,7 +114,7 @@
 
   <script type="module" src="../assets/js/scripts/ultimos-registros.js"></script>
 
-  <?php include '../padroes/footer.php' ?>
+  <?php include '../padroes/footer.php' ?> 
 
 </body>
 </html>
