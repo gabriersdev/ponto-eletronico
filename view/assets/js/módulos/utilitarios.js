@@ -193,7 +193,8 @@ function escutaClickRecarregaPagina(){
 function cronometrar(inicio, fim){
   const cronometro = 
   setInterval(() => {
-    return diferencaEntreDatas(inicio, fim, 'crescente').horas
+    // return diferencaEntreDatas(inicio, fim, 'crescente').horas
+    return null;
   }, 1000);
 }
 
@@ -214,7 +215,8 @@ function diferencaEntreDatas(inicio, fim, condicao){
   
   if (ms > 0) {
     duracao = moment.duration(ms);
-    return {horas: Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss"), dias: duracao.days};
+    // return {horas: Math.floor(duracao.get('hours')) + moment.utc(ms).format(":mm:ss"), dias: duracao.days};
+    return {horas: '00:00:00', dias: 0};
   } else {
     return {horas: '00:00:00', dias: 0};
   }

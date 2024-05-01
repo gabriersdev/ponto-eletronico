@@ -12,7 +12,7 @@
 - Filtrar os últimos registros por data
 - Mostrar os horários de trabalho e almoço de acordo com o usuário
 
-## TODO 
+## TODO
 
 - Implementar registro de horários
 - Implementar a confirmação de registro de horários

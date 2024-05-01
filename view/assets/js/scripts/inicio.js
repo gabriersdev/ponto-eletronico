@@ -89,49 +89,49 @@ import { conteudos } from "../módulos/conteudos.js";
               if(!isEmpty(entrada) && !isEmpty(saida)){
                 card_body.innerHTML += `<ul class="list-group" data-conteudo="horarios-horarios-hoje"><li class="list-group-item d-flex align-items-center justify-content-between list-group-title"><b>Horário</b>&nbsp;<div><button type="button" class="btn btn-primary">Registrar entrada</button>&nbsp;<button type="button" class="btn btn-secondary">Registrar saída</button></div></li><li class="list-group-item d-flex align-items-center justify-content-between"><div><span class="text-muted">Entrada:</span><span>&nbsp;${`00:00`}</span></div><span class="text-muted contador-atraso">Sem atraso</span></li><li class="list-group-item d-flex align-items-center justify-content-between"><div><span class="text-muted">Saída:</span><span>&nbsp;${`00:00`}</span></div><span class="text-muted contador-atraso">Sem atraso</span></li><li class="list-group-item contador-periodos"><div><span class="text-muted">Tempo decorrido:</span><span data-conteudo="tempo-decorrido-horario">&nbsp;${cronometrar(entrada, moment(), 'crescente')}</span></div><div><span class="text-muted">Tempo restante:</span><span data-conteudo="tempo-restante-horario">&nbsp;${cronometrar(entrada, moment(), 'decrescente').split('').includes('-') ? '0:00:00' : cronometrar(entrada, moment(), 'decrescente')}</span></div></li></ul><br>`;
                 
-                setInterval(() => {
-                  if(cronometrar(entrada, moment()).split('').includes('-')){
-                    card_body.querySelectorAll('.contador-atraso')[0].textContent = 'Atrasado';
-                  }else{
-                    card_body.querySelectorAll('.contador-atraso')[0].textContent = 'Sem atraso';
-                  }
+                // setInterval(() => {
+                //   if(cronometrar(entrada, moment()).split('').includes('-')){
+                //     card_body.querySelectorAll('.contador-atraso')[0].textContent = 'Atrasado';
+                //   }else{
+                //     card_body.querySelectorAll('.contador-atraso')[0].textContent = 'Sem atraso';
+                //   }
                   
-                  if(cronometrar(saida, moment()).split('').includes('-')){
-                    card_body.querySelectorAll('.contador-atraso')[1].textContent = 'Atrasado';
-                  }else{
-                    card_body.querySelectorAll('.contador-atraso')[1].textContent = 'Sem atraso';
-                  }
+                //   if(cronometrar(saida, moment()).split('').includes('-')){
+                //     card_body.querySelectorAll('.contador-atraso')[1].textContent = 'Atrasado';
+                //   }else{
+                //     card_body.querySelectorAll('.contador-atraso')[1].textContent = 'Sem atraso';
+                //   }
                   
-                  const tempoDecorrido = cronometrar(entrada, moment(), 'crescente');
-                  const tempoRestante = cronometrar(entrada, moment(), 'decrescente').split('').includes('-') ? '0:00:00' : cronometrar(entrada, moment(), 'decrescente');
+                //   const tempoDecorrido = cronometrar(entrada, moment(), 'crescente');
+                //   const tempoRestante = cronometrar(entrada, moment(), 'decrescente').split('').includes('-') ? '0:00:00' : cronometrar(entrada, moment(), 'decrescente');
 
-                  card_body.querySelector('[data-conteudo="tempo-decorrido-horario"]').innerHTML = `&nbsp;${tempoDecorrido}`;
-                  card_body.querySelector('[data-conteudo="tempo-restante-horario"]').innerHTML = `&nbsp;${tempoRestante}`;
-                }, 1000);
+                //   card_body.querySelector('[data-conteudo="tempo-decorrido-horario"]').innerHTML = `&nbsp;${tempoDecorrido}`;
+                //   card_body.querySelector('[data-conteudo="tempo-restante-horario"]').innerHTML = `&nbsp;${tempoRestante}`;
+                // }, 1000);
               }
               
               if(!isEmpty(saida_almoco) && !isEmpty(retorno_almoco)){
                 card_body.innerHTML += `<ul class="list-group" data-conteudo="horarios-almoco-hoje"><li class="list-group-item d-flex align-items-center justify-content-between list-group-title"><b>Almoço</b>&nbsp;<div><button type="button" class="btn btn-primary">Registrar saída</button>&nbsp;<button type="button" class="btn btn-secondary">Registrar retorno</button></div></li><li class="list-group-item d-flex align-items-center justify-content-between"><div><span class="text-muted">Saída:</span><span>&nbsp;${`00:00`}</span></div><span class="text-muted contador-atraso">Sem atraso</span></li><li class="list-group-item d-flex align-items-center justify-content-between"><div><span class="text-muted">Retorno:</span><span>&nbsp;${`00:00`}</span></div><span class="text-muted contador-atraso">Sem atraso</span></li><li class="list-group-item contador-periodos"><div><span class="text-muted">Tempo decorrido:</span><span data-conteudo="tempo-decorrido-almoco">&nbsp;${cronometrar(saida_almoco, moment(), 'crescente')}</span></div><div><span class="text-muted">Tempo restante:</span><span data-conteudo="tempo-restante-almoco">&nbsp;${cronometrar(retorno_almoco, moment(), 'decrescente').split('').includes('-') ? '0:00:00' : cronometrar(entrada, moment(), 'decrescente')}</span></div></li></ul>`;
                 
-                setInterval(() => {
-                  if(cronometrar(saida_almoco, moment()).split('').includes('-')){
-                    card_body.querySelectorAll('.contador-atraso')[2].textContent = 'Atrasado';
-                  }else{
-                    card_body.querySelectorAll('.contador-atraso')[2].textContent = 'Sem atraso';
-                  }
+                // setInterval(() => {
+                //   if(cronometrar(saida_almoco, moment()).split('').includes('-')){
+                //     card_body.querySelectorAll('.contador-atraso')[2].textContent = 'Atrasado';
+                //   }else{
+                //     card_body.querySelectorAll('.contador-atraso')[2].textContent = 'Sem atraso';
+                //   }
                   
-                  if(cronometrar(retorno_almoco, moment()).split('').includes('-')){
-                    card_body.querySelectorAll('.contador-atraso')[3].textContent = 'Atrasado';
-                  }else{
-                    card_body.querySelectorAll('.contador-atraso')[3].textContent = 'Sem atraso';
-                  }
+                //   if(cronometrar(retorno_almoco, moment()).split('').includes('-')){
+                //     card_body.querySelectorAll('.contador-atraso')[3].textContent = 'Atrasado';
+                //   }else{
+                //     card_body.querySelectorAll('.contador-atraso')[3].textContent = 'Sem atraso';
+                //   }
                   
-                  const tempoDecorrido = cronometrar(saida_almoco, moment(), 'crescente');
-                  const tempoRestante = cronometrar(retorno_almoco, moment(), 'decrescente').split('').includes('-') ? '0:00:00' : cronometrar(entrada, moment(), 'decrescente');
+                //   const tempoDecorrido = cronometrar(saida_almoco, moment(), 'crescente');
+                //   const tempoRestante = cronometrar(retorno_almoco, moment(), 'decrescente').split('').includes('-') ? '0:00:00' : cronometrar(entrada, moment(), 'decrescente');
 
-                  card_body.querySelector('[data-conteudo="tempo-decorrido-almoco"]').innerHTML = `&nbsp;${tempoDecorrido}`;
-                  card_body.querySelector('[data-conteudo="tempo-restante-almoco"]').innerHTML = `&nbsp;${tempoRestante}`;
-                }, 1000);
+                //   card_body.querySelector('[data-conteudo="tempo-decorrido-almoco"]').innerHTML = `&nbsp;${tempoDecorrido}`;
+                //   card_body.querySelector('[data-conteudo="tempo-restante-almoco"]').innerHTML = `&nbsp;${tempoRestante}`;
+                // }, 1000);
               }
             });
           }else{

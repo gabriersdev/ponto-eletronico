@@ -217,17 +217,17 @@ export function instruirDesacionarBusca(inplace){
                 card_body.querySelector('tbody').innerHTML += `<tr><td scope="row" colspan="2"><div class="input-group"><div class="input-group-text"><input class="form-check-input mt-0" type="checkbox" ${checked} disabled></div><input type="text" class="form-control" value="${dia}, ${formatarData(element.dia_semana_usuario_horario)}" disabled></div></td><td data-conteudo="horario-entrada">00:00</td><td data-conteudo="horario-saida">00:00</td><td>0:00:00</td></tr>`;
               }
               
-              setInterval(() => {
-                const tempos = document.querySelectorAll('[data-conteudo="tempo-trabalhado"]');
-                if(typeof tempos == 'object'){
-                  tempos.forEach(tempo => {
-                    acao(
-                      (tempo),
-                      (tempo.parentElement.querySelector('[data-conteudo="horario-entrada"]').textContent),
-                      (tempo.parentElement.querySelector('[data-conteudo="horario-saida"]').textContent));
-                    })
-                  }
-                }, 1000);
+              // setInterval(() => {
+              //   const tempos = document.querySelectorAll('[data-conteudo="tempo-trabalhado"]');
+              //   if(typeof tempos == 'object'){
+              //     tempos.forEach(tempo => {
+              //       acao(
+              //         (tempo),
+              //         (tempo.parentElement.querySelector('[data-conteudo="horario-entrada"]').textContent),
+              //         (tempo.parentElement.querySelector('[data-conteudo="horario-saida"]').textContent));
+              //       })
+              //     }
+              //   }, 1000);
                 
                 function acao(elemento, inicio, fim){
                   if(isEmpty(fim)){
