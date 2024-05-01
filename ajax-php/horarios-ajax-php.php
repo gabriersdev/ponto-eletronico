@@ -58,6 +58,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
         
         $retorno['mensagem'] = 'Solicitação recebida';
         $retorno['sucesso'] = true;
+      }else if($_POST['action'] == 'registrar'){
+        $dia_semana = htmlentities($_POST['dia_semana']);
+        $hora_entrada = htmlentities($_POST['hora_entrada']);
+        $hora_saida = htmlentities($_POST['hora_saida']);
+        $hora_saida_almoco = htmlentities($_POST['hora_saida_almoco']);
+        $hora_retorno_almoco = htmlentities($_POST['hora_retorno_almoco']);
+        
+        if($HorariosController -> registrarHorario($id_usuario, $dia_semana, $hora_entrada, $hora_saida, $hora_saida_almoco, $hora_retorno_almoco)){
+          $retorno['mensagem'] = 'Horário registrado';
+          $retorno['sucesso'] = true;
+        }else{
+          $retorno['mensagem'] = 'Erro ao registrar horário';
+          $retorno['sucesso'] = false;
+        }
       }else{
         $retorno['dados'] = array();
         

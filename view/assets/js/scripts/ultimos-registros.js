@@ -54,7 +54,7 @@ function acaoSelecaoDropdown(instrucao){
       card_body.querySelector('tbody').innerHTML = '';
     }
   }
-
+  
   function desacionarBusca(dropdown, opcaoSelecionada){
     const botao = dropdown.parentElement.querySelector('[data-acao="btn-dropdown-toggle"]');
     if(!isEmpty(botao)){
@@ -161,11 +161,13 @@ export function instruirDesacionarBusca(inplace){
     })
   }
   
-  $(document).ready(function(){
-    retornarUltimosRegistros(10);
-    escutarSubmitFormularioFiltroRegistros();
-    acaoSelecaoDropdown();
-  }); 
+  if (window.location.pathname === '/projetos/ponto-eletronico/view/ultimos-registros/') {
+    $(document).ready(function(){
+      retornarUltimosRegistros(10);
+      escutarSubmitFormularioFiltroRegistros();
+      acaoSelecaoDropdown();
+    }); 
+  }
   
   function pesquisarRegistros(inicio, fim){
     $.ajax({
@@ -228,37 +230,37 @@ export function instruirDesacionarBusca(inplace){
               //       })
               //     }
               //   }, 1000);
-                
-                function acao(elemento, inicio, fim){
-                  if(isEmpty(fim)){
-                    fim = moment(new Date());
-                  }
-                  
-                  elemento.textContent = diferencaEntreDatas(inicio, fim, 'crescente').horas;
+              
+              function acao(elemento, inicio, fim){
+                if(isEmpty(fim)){
+                  fim = moment(new Date());
                 }
                 
-              });
-            }else{
-              if(!isEmpty(conteudos.feedback.nenhum_horario)){
-                card_body.innerHTML = conteudos.feedback.nenhum_registro;
-                escutaClickRecarregaPagina();
+                elemento.textContent = diferencaEntreDatas(inicio, fim, 'crescente').horas;
               }
+              
+            });
+          }else{
+            if(!isEmpty(conteudos.feedback.nenhum_horario)){
+              card_body.innerHTML = conteudos.feedback.nenhum_registro;
+              escutaClickRecarregaPagina();
             }
-            break;
-            
-            case 'nenhum dado foi recebido':
-            default:
-            // swalAlert('error', 'error', 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI', null);
-            card_body.innerHTML = conteudos.feedback.nenhum_dado;
-            break;
           }
+          break;
+          
+          case 'nenhum dado foi recebido':
+          default:
+          // swalAlert('error', 'error', 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI', null);
+          card_body.innerHTML = conteudos.feedback.nenhum_dado;
+          break;
         }
-      })
-      
-      .fail(function(erro){
-        console.log(erro)
-        // swalAlert('error', 'error', 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI', null);
-      })
-    }   
+      }
+    })
     
-  })();
+    .fail(function(erro){
+      console.log(erro)
+      // swalAlert('error', 'error', 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI', null);
+    })
+  }   
+  
+})();

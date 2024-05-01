@@ -274,14 +274,6 @@ async function retornarUltimosRegistros(quantidade, filtro){
 escutaClickLinkSair();
 atualizarDatas();
 
-const cronometro = 
-setInterval(() => {
-  // console.clear();
-  // const agr = moment();
-  // console.log(diferencaEntreDatas(ontem, agr).horas);
-}, 1000);
-clearInterval(cronometro);
-
 export{
   marcarPaginaNoCabecalho,
   verificarODia,

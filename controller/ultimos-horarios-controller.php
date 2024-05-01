@@ -22,6 +22,10 @@ class UltimosHorariosController{
   public function registrosUsuariosFiltro($codigo_usuario, $quantidade_ultimos_dias, $filtro){
     return $this -> UltimosHorariosDAO -> registrosUsuariosFiltro($codigo_usuario, $quantidade_ultimos_dias, $filtro);
   }
+  
+  public function getHorariosArmazenadosDia($codigo_usuario, $dia){
+    return $this -> UltimosHorariosDAO -> registrosUsuariosPeriodos($codigo_usuario, $dia, $dia) -> fetchAll(PDO::FETCH_ASSOC);
+  }
 }
 
 ?>
