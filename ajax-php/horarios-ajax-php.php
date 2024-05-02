@@ -58,7 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
         
         $retorno['mensagem'] = 'Solicitação recebida';
         $retorno['sucesso'] = true;
-      }else if($_POST['action'] == 'registrar'){
+      }else if((isset($_POST['action']) || !empty($_POST['action'])) && $_POST['action'] == 'registrar'){
         $dia_semana = htmlentities($_POST['dia_semana']);
         $hora_entrada = htmlentities(isset($_POST['hora_entrada']) ? $_POST['hora_entrada'] : '');
         $hora_saida = htmlentities(isset($_POST['hora_saida']) ? $_POST['hora_saida'] : '');
