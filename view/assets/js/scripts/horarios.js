@@ -59,6 +59,7 @@ import { verificarODia } from '../script.js';
       
     .fail(function(erro){
       swalAlert('error', 'error', 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI', null);
+      console.log(erro);
     })
     
   })
