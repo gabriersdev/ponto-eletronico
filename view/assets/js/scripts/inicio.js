@@ -267,7 +267,50 @@ window.registrarEntrada = ((event) => {
     confirmButtonText: 'Sim',
     focusCancel: true
   }).then((result) => {
-    console.log(result);
+    if (result.isConfirmed) {
+      // Registra a entrada
+      $.ajax({
+        method: "POST",
+        url: "../../ajax-php/horarios-ajax-php.php",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: {solicitacao: 'true', action: 'registrar', dia_semana: moment().format('YYYY-MM-DD'), hora_entrada: moment().format('HH:mm:ss'), dado: 'entrada_registro'},
+        dataType: 'json',
+        encode: true,
+      })
+      
+      .done(function(msg){
+        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Registrado!',
+            text: 'Entrada registrada com sucesso!',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => { window.location.reload() }, 1500);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro!',
+            text: 'Não foi possível registrar a entrada. Tente novamente mais tarde.',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          console.log(msg);
+        }
+      })
+      
+      .fail(function(erro){
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro!',
+          text: 'Ocorreu uma falha ao conectar ao servidor. Tente novamente mais tarde.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(erro);
+      });
+    }
   });
 });
 
@@ -281,7 +324,50 @@ window.registrarSaida = ((event) => {
     confirmButtonText: 'Sim',
     focusCancel: true
   }).then((result) => {
-    console.log(result);
+    if (result.isConfirmed) {
+      // Registra a saída
+      $.ajax({
+        method: "POST",
+        url: "../../ajax-php/horarios-ajax-php.php",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: {solicitacao: 'true', action: 'registrar', dia_semana: moment().format('YYYY-MM-DD'), hora_saida: moment().format('HH:mm:ss'), dado: 'saida_registro'},
+        dataType: 'json',
+        encode: true,
+      })
+
+      .done(function(msg){
+        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Registrado!',
+            text: 'Saída registrada com sucesso!',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => { window.location.reload() }, 1500);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro!',
+            text: 'Não foi possível registrar a saída. Tente novamente mais tarde.',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          console.log(msg);
+        }
+      })
+
+      .fail(function(erro){
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro!',
+          text: 'Ocorreu uma falha ao conectar ao servidor. Tente novamente mais tarde.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(erro);
+      });
+    }
   });
 });
 
@@ -295,7 +381,50 @@ window.registrarSaidaAlmoco = ((event) => {
     confirmButtonText: 'Sim',
     focusCancel: true
   }).then((result) => {
-    console.log(result);
+    if (result.isConfirmed) {
+      // Registra a saída para o almoço
+      $.ajax({
+        method: "POST",
+        url: "../../ajax-php/horarios-ajax-php.php",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: {solicitacao: 'true', action: 'registrar', dia_semana: moment().format('YYYY-MM-DD'), hora_saida_almoco: moment().format('HH:mm:ss'), dado: 'saida_almoco'},
+        dataType: 'json',
+        encode: true,
+      })
+
+      .done(function(msg){
+        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Registrado!',
+            text: 'Saída para o almoço registrada com sucesso!',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => { window.location.reload() }, 1500);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro!',
+            text: 'Não foi possível registrar a saída para o almoço. Tente novamente mais tarde.',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          console.log(msg);
+        }
+      })
+
+      .fail(function(erro){
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro!',
+          text: 'Ocorreu uma falha ao conectar ao servidor. Tente novamente mais tarde.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(erro);
+      });
+    }
   });
 });
 
@@ -309,7 +438,51 @@ window.registraRetornoAlmoco = ((event) => {
     confirmButtonText: 'Sim',
     focusCancel: true
   }).then((result) => {
-    console.log(result);
+    if (result.isConfirmed) {
+      // Registra o retorno do almoço
+
+      $.ajax({
+        method: "POST",
+        url: "../../ajax-php/horarios-ajax-php.php",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: {solicitacao: 'true', action: 'registrar', dia_semana: moment().format('YYYY-MM-DD'), hora_retorno_almoco: moment().format('HH:mm:ss'), dado: 'retorno_almoco'},
+        dataType: 'json',
+        encode: true,
+      })
+
+      .done(function(msg){
+        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Registrado!',
+            text: 'Retorno do almoço registrado com sucesso!',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => { window.location.reload() }, 1500);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro!',
+            text: 'Não foi possível registrar o retorno do almoço. Tente novamente mais tarde.',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          console.log(msg);
+        }
+      })
+
+      .fail(function(erro){
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro!',
+          text: 'Ocorreu uma falha ao conectar ao servidor. Tente novamente mais tarde.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(erro);
+      });
+    }
   });
 });
 

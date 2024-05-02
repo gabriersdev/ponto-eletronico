@@ -91,7 +91,6 @@
           $stmt -> bindValue(':tipo_dado', $tipo_dado);
           $stmt -> bindValue(':horario', $horario);
           $stmt -> execute();
-          echo('Aqui');
           return $stmt;
 
         } catch (Exception $e) {

@@ -60,12 +60,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
         $retorno['sucesso'] = true;
       }else if($_POST['action'] == 'registrar'){
         $dia_semana = htmlentities($_POST['dia_semana']);
-        $hora_entrada = htmlentities($_POST['hora_entrada']);
-        $hora_saida = htmlentities($_POST['hora_saida']);
-        $hora_saida_almoco = htmlentities($_POST['hora_saida_almoco']);
-        $hora_retorno_almoco = htmlentities($_POST['hora_retorno_almoco']);
-        
-        if($HorariosController -> registrarHorario($id_usuario, $dia_semana, $hora_entrada, $hora_saida, $hora_saida_almoco, $hora_retorno_almoco)){
+        $hora_entrada = htmlentities(isset($_POST['hora_entrada']) ? $_POST['hora_entrada'] : '');
+        $hora_saida = htmlentities(isset($_POST['hora_saida']) ? $_POST['hora_saida'] : '');
+        $hora_saida_almoco = htmlentities(isset($_POST['hora_saida_almoco']) ? $_POST['hora_saida_almoco'] : '');
+        $hora_retorno_almoco = htmlentities(isset($_POST['hora_retorno_almoco']) ? $_POST['hora_retorno_almoco'] : '');
+        $dado = htmlentities(isset($_POST['dado']) ? $_POST['dado'] : '');
+
+        $com = $HorariosController -> registrarHorario($id_usuario, $dia_semana, $hora_entrada, $hora_saida, $hora_saida_almoco, $hora_retorno_almoco, $dado);
+        $retorno['x'] = $com;
+        if($com){
           $retorno['mensagem'] = 'Horário registrado';
           $retorno['sucesso'] = true;
         }else{
