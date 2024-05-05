@@ -486,29 +486,3 @@ window.registraRetornoAlmoco = ((event) => {
     }
   });
 });
-
-const reg = () => {
-  $.ajax({
-    method: "POST",
-    url: "../../ajax-php/horarios-ajax-php.php",
-    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-    data: {solicitacao: 'true', action: 'registrar', dia_semana: '2024-05-02', hora_entrada: '01:00:00', hora_saida: '01:00:00', hora_saida_almoco: '01:00:00', hora_retorno_almoco: '01:00:00'},
-    dataType: 'json',
-    encode: true,
-  })
-  
-  .done(function(msg){
-    if (!isEmpty(msg) && !isEmpty(msg.mensagem)) {
-      if(msg.mensagem.toLowerCase() === 'horário registrado'){
-        console.log('Registrado');
-      } else {
-        console.log('Não registrado');
-        console.log(msg.mensagem);
-      }
-    }
-  })
-  
-  .fail(function(erro){
-    console.log(erro)
-  });
-}

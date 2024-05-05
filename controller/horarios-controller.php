@@ -53,8 +53,8 @@ class HorariosController{
       $this->HorariosDao->alterarHorario($horariosArm[0]['id_usuario_registro'], $usuario, $dia, $dado, $horario);
       return true;
     } else {
-      // Não tem registro
-      return $this->HorariosDao->registrarHorario($usuario, $dia, $entrada, $saida, $saida_almoco, $retorno_almoco);
+      // Não tem registro e não foi passado param dado;
+      return $this->HorariosDao->registrarHorario($usuario, $dia, empty($entrada) ? null : $entrada, empty($saida) ? null : $saida, empty($saida_almoco) ? null : $saida_almoco, empty($retorno_almoco) ? null : $retorno_almoco);
     }
   }
 }

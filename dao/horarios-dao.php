@@ -55,7 +55,7 @@
     }
 
     public function registrarHorario($usuario, $dia, $entrada, $saida, $saida_almoco, $retorno_almoco){
-      if(!empty($usuario) && !empty($dia) && !empty($entrada) && !empty($saida) && !empty($saida_almoco) && !empty($retorno_almoco)){
+      if(!empty($usuario) && !empty($dia)){
         try{
           $requisicao = $this -> conexao;
           $stmt = $requisicao -> conectar() -> prepare('CALL pd_usuarios_registros_insert(:usuario, :dia, :entrada, :saida, :saida_almoco, :retorno_almoco)');
