@@ -94,7 +94,7 @@ async function swalAlert(tipo, icon, title, text, mensagem, executar){
       focusCancel: true
     }).then((result) => {
       if(result.isConfirmed){
-        eval(executar);
+        window.location.href = "../sair/index.php"
       }
       
       return result.isConfirmed;

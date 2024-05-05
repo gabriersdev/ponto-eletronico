@@ -1,5 +1,6 @@
 import { acaoControleVisualizacaoSenha, confirmarSaidaUsuarioFormulario, isEmpty, removeSpace } from '../módulos/utilitarios.js'
 import { credentialError, accessAut, accessWarning } from '../módulos/feedback.js';
+
 (() => {
   /* Funções apenas para a página de login */
   $(document).ready(function (){

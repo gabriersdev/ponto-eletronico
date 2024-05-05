@@ -36,7 +36,7 @@
               Pesquisa
             </div>
             <div class="card-body">
-              <form data-fomrulario="pesquisa-ultimos-horarios">
+              <form action="#" method="POST" data-fomrulario="pesquisa-ultimos-horarios">
                 <div class="row">
                   <div class="col">
                     <div class="input-group mb-3" data-input-group="data-inicio">
@@ -112,8 +112,7 @@
     marcarPaginaNoCabecalho('ultimos-registros');
   </script>
 
-  <script type="module" src="../assets/js/scripts/ultimos-registros.js"></script>
-
+  <script type="module" src="../assets/js/scripts/ultimos-registros.js" defer></script>
   <?php include '../padroes/footer.php' ?> 
 
 </body>

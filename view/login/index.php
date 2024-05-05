@@ -38,13 +38,8 @@
       </section>
     </main>
 
-    <?php include '../padroes/footer.php' ?>
-
-    <script>
-
-    </script>
-
     <script type="module" src="../assets/js/scripts/login-scripts.js" defer></script>
+    <?php include '../padroes/footer.php' ?>
 
   </body>
 </html>
