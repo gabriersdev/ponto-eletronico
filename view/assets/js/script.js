@@ -220,7 +220,7 @@ async function retornarUltimosRegistros(quantidade, filtro){
 
             }
 
-            setInterval(() => {
+            // setInterval(() => {
               const tempos = document.querySelectorAll('[data-conteudo="tempo-trabalhado"]');
               if(typeof tempos == 'object'){
                 tempos.forEach(tempo => {
@@ -230,14 +230,15 @@ async function retornarUltimosRegistros(quantidade, filtro){
                     (tempo.parentElement.querySelector('[data-conteudo="horario-saida"]').textContent));
                 })
               }
-            }, 1000);
+            // }, 1000);
 
             function acao(elemento, inicio, fim){
               if(isEmpty(fim)){
                 fim = moment(new Date());
               }
               
-              elemento.textContent = diferencaEntreDatas(inicio, fim, 'crescente').horas;
+              // elemento.textContent = diferencaEntreDatas(inicio, fim, 'crescente').horas;
+              elemento.textContent = "-"
             }
 
           });
