@@ -1,0 +1,78 @@
+@media print {
+  body{
+    padding: 0;
+    margin: 0;
+    width: max-content;
+  }
+
+  *:not(.alert){
+    border-radius: 0 !important;
+    background: unset !important;
+  }
+
+  .container{
+    padding: 0 !important;
+    margin: 0 !important;
+    width: max-content;
+  }
+
+  .cabecalho,
+  .principal .card .card:first-child{
+    display: none;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .principal .card:first-child .card-header{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .principal .card .card:last-child{
+    padding: 0 !important;
+    margin: 0 !important;
+
+    .card-header{
+      display: none !important;
+    }
+  }
+
+  [data-conteudo="registros"]{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  [data-tabela="ultimos-registros"]{
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline !important;
+  }
+
+
+  [data-tabela="ultimos-registros"]{
+    counter-reset: counter-reg-table;
+  }
+
+  [data-tabela="ultimos-registros"] tr td:first-child{
+    /* display: none !important; */
+    counter-increment: counter-reg-table;
+  }
+
+  .btn{
+    display: none !important;
+  }
+
+  .input-group::before{
+    content: counter(counter-reg-table);
+    margin-right: 1rem !important;
+  }
+
+  .form-control{
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .input-group-text{
+    display: none !important;
+  }
+}

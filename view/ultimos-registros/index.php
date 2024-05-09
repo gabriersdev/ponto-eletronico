@@ -16,6 +16,7 @@
 <html lang="pt-BR">
 <head>
   <?php require '../padroes/head.php'; ?>
+  <link rel="stylesheet" href="../assets/css/ultimos-registros-print.css">
 </head>
 <body>
 
@@ -63,7 +64,9 @@
           <div class="card">
             <div class="card-header normal d-flex justify-content-between align-items-center">
               Registros
-              <div class="dropdown">
+              <div style="display: flex; gap: 0.35rem">
+                <button class="btn btn-secondary" type="button" onclick="window.print()">Imprimir</button>
+                <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" data-acao="btn-dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Ordem
                 </button>
@@ -72,6 +75,7 @@
                   <li><a class="dropdown-item" href="#">Mais antigos</a></li>
                   <li><a class="dropdown-item" href="#">Últimos 30 dias</a></li>
                 </ul>
+              </div>
               </div>
             </div>
             <div class="card-body" data-conteudo="registros">
