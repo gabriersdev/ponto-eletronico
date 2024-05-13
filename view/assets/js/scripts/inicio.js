@@ -218,45 +218,45 @@ import { conteudos } from "../módulos/conteudos.js";
     atualizarDadosDia();
     carregarHorariosHoje();
     carregarHorariosProximosDias();
-
-    // Carrega o que foi registrado para hoje
-    $.ajax({
-      method: "POST",
-      url: "../../ajax-php/ultimos-horarios-ajax-php.php",
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      data: {solicitacao: 'true', inicio: moment().format('YYYY-MM-DD'), fim: moment().format('YYYY-MM-DD')},
-      // data: {solicitacao: 'true', inicio: '2024-05-02', fim: '2024-05-02'},
-      dataType: 'json',
-      encode: true,
-    })
-    
-    .done(function(msg){
-      if (!isEmpty(msg) && !isEmpty(msg.mensagem)) {
-        if(msg.mensagem.toLowerCase() === 'dados recebidos'){
-          if(!isEmpty(msg.dados)){
-            const formatarApresentacao = (horario) => {
-              return horario.substr(0, 5);
-            }
-
-            msg.dados.forEach(element => {
-              $('#hr-entrada').html(!isEmpty(element.hora_entrada_usuario_horario) ? `&nbsp;${formatarApresentacao(element.hora_entrada_usuario_horario)}` : '&nbsp;00:00');
-              $('#hr-saida').html(!isEmpty(element.hora_saida_usuario_horario) ? `&nbsp;${formatarApresentacao(element.hora_saida_usuario_horario)}` : '&nbsp;00:00');
-              $('#hr-saida-almoco').html(!isEmpty(element.hora_saida_usuario_almoco) ? `&nbsp;${formatarApresentacao(element.hora_saida_usuario_almoco)}` : '&nbsp;00:00');
-              $('#hr-retorno-almoco').html(!isEmpty(element.hora_retorno_usuario_almoco) ? `&nbsp;${formatarApresentacao(element.hora_retorno_usuario_almoco)}` : '&nbsp;00:00');
-            })
-          } else {
-            // Não há horários registrados para hoje
-            
-          }
-        }
-      }
-    })
-
-    .fail(function(erro){
-      console.log(erro)
-    });
+    carregarHorariosRegistradosHoje();
   })
 })();
+
+window.carregarHorariosRegistradosHoje = (() => {
+  // Carrega o que foi registrado para hoje
+  $.ajax({
+    method: "POST",
+    url: "../../ajax-php/ultimos-horarios-ajax-php.php",
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    data: {solicitacao: 'true', inicio: moment().format('YYYY-MM-DD'), fim: moment().format('YYYY-MM-DD')},
+    dataType: 'json',
+    encode: true,
+  })
+  
+  .done(function(msg){
+    if (!isEmpty(msg) && !isEmpty(msg.mensagem)) {
+      if(msg.mensagem.toLowerCase() === 'dados recebidos'){
+        if(!isEmpty(msg.dados)){
+          const formatarApresentacao = (horario) => {
+            return horario.substr(0, 5);
+          }
+          msg.dados.forEach(element => {
+            $('#hr-entrada').html(!isEmpty(element.hora_entrada_usuario_horario) ? `&nbsp;${formatarApresentacao(element.hora_entrada_usuario_horario)}` : '&nbsp;00:00');
+            $('#hr-saida').html(!isEmpty(element.hora_saida_usuario_horario) ? `&nbsp;${formatarApresentacao(element.hora_saida_usuario_horario)}` : '&nbsp;00:00');
+            $('#hr-saida-almoco').html(!isEmpty(element.hora_saida_usuario_almoco) ? `&nbsp;${formatarApresentacao(element.hora_saida_usuario_almoco)}` : '&nbsp;00:00');
+            $('#hr-retorno-almoco').html(!isEmpty(element.hora_retorno_usuario_almoco) ? `&nbsp;${formatarApresentacao(element.hora_retorno_usuario_almoco)}` : '&nbsp;00:00');
+          })
+        } else {
+          // Não há horários registrados para hoje
+        }
+      }
+    }
+  })
+  
+  .fail(function(erro){
+    console.log(erro)
+  });
+});
 
 window.registrarEntrada = ((event) => {
   event.preventDefault();
@@ -280,7 +280,8 @@ window.registrarEntrada = ((event) => {
       })
       
       .done(function(msg){
-        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso) {
+        // console.log(msg);
+        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso && [true, false].includes(msg.retorno)) {
           Swal.fire({
             icon: 'success',
             title: 'Registrado!',
@@ -288,7 +289,17 @@ window.registrarEntrada = ((event) => {
             showConfirmButton: false,
             timer: 1500
           });
-          setTimeout(() => { window.location.reload() }, 1500);
+          // setTimeout(() => { window.location.reload() }, 1500);
+          carregarHorariosRegistradosHoje();
+        } else if (![true, false].includes(msg.retorno)){
+          const mensagensRetorno = ['Horário de entrada já foi registrado', 'O horário de saída já foi registrado e a entrada não pode ser posterior a saída'];
+          
+          Swal.fire({
+            icon: mensagensRetorno.includes(msg.retorno) ? 'warning' : 'error',
+            title: msg.retorno,
+            text: '',
+            showConfirmButton: true,
+          });
         } else {
           Swal.fire({
             icon: 'error',
@@ -335,9 +346,10 @@ window.registrarSaida = ((event) => {
         dataType: 'json',
         encode: true,
       })
-
+      
       .done(function(msg){
-        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso) {
+        // console.log(msg);
+        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso && [true, false].includes(msg.retorno)) {
           Swal.fire({
             icon: 'success',
             title: 'Registrado!',
@@ -345,7 +357,17 @@ window.registrarSaida = ((event) => {
             showConfirmButton: false,
             timer: 1500
           });
-          setTimeout(() => { window.location.reload() }, 1500);
+          // setTimeout(() => { window.location.reload() }, 1500);
+          carregarHorariosRegistradosHoje();
+        } else if (![true, false].includes(msg.retorno)){
+          const mensagensRetorno = ['Primeiro registre a entrada para depois registrar a saída', 'O horário de saída já foi registrado', 'O horário de entrada não pode ser posterior ao horário de saída', 'O horário de entrada não pode ser igual ao horário de saída'];
+          
+          Swal.fire({
+            icon: mensagensRetorno.includes(msg.retorno) ? 'warning' : 'error',
+            title: msg.retorno,
+            text: '',
+            showConfirmButton: true,
+          });
         } else {
           Swal.fire({
             icon: 'error',
@@ -357,7 +379,7 @@ window.registrarSaida = ((event) => {
           console.log(msg);
         }
       })
-
+      
       .fail(function(erro){
         Swal.fire({
           icon: 'error',
@@ -392,9 +414,10 @@ window.registrarSaidaAlmoco = ((event) => {
         dataType: 'json',
         encode: true,
       })
-
+      
       .done(function(msg){
-        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso) {
+        // console.log(msg);
+        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso && [true, false].includes(msg.retorno)) {
           Swal.fire({
             icon: 'success',
             title: 'Registrado!',
@@ -402,7 +425,17 @@ window.registrarSaidaAlmoco = ((event) => {
             showConfirmButton: false,
             timer: 1500
           });
-          setTimeout(() => { window.location.reload() }, 1500);
+          // setTimeout(() => { window.location.reload() }, 1500);
+          carregarHorariosRegistradosHoje();
+        } else if (![true, false].includes(msg.retorno)){
+          const mensagensRetorno = ['Primeiro registre a entrada para depois registrar a saída para o almoço', 'O horário de saída já foi registrado e não é possível registrar a saída para o almoço', 'O horário de saída para o almoço já foi registrado', 'O horário de retorno do almoço já foi registrado e a saída para o almoço não pode ser posterior ao retorno'];
+          
+          Swal.fire({
+            icon: mensagensRetorno.includes(msg.retorno) ? 'warning' : 'error',
+            title: msg.retorno,
+            text: '',
+            showConfirmButton: true,
+          });
         } else {
           Swal.fire({
             icon: 'error',
@@ -414,7 +447,7 @@ window.registrarSaidaAlmoco = ((event) => {
           console.log(msg);
         }
       })
-
+      
       .fail(function(erro){
         Swal.fire({
           icon: 'error',
@@ -441,7 +474,7 @@ window.registraRetornoAlmoco = ((event) => {
   }).then((result) => {
     if (result.isConfirmed) {
       // Registra o retorno do almoço
-
+      
       $.ajax({
         method: "POST",
         url: "../../ajax-php/horarios-ajax-php.php",
@@ -450,9 +483,10 @@ window.registraRetornoAlmoco = ((event) => {
         dataType: 'json',
         encode: true,
       })
-
+      
       .done(function(msg){
-        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso) {
+        // console.log(msg);
+        if (!isEmpty(msg) && !isEmpty(msg.mensagem) && msg.sucesso && [true, false].includes(msg.retorno)) {
           Swal.fire({
             icon: 'success',
             title: 'Registrado!',
@@ -460,7 +494,17 @@ window.registraRetornoAlmoco = ((event) => {
             showConfirmButton: false,
             timer: 1500
           });
-          setTimeout(() => { window.location.reload() }, 1500);
+          // setTimeout(() => { window.location.reload() }, 1500);
+          carregarHorariosRegistradosHoje();
+        } else if (![true, false].includes(msg.retorno)){
+          const mensagensRetorno = ['Primeiro registre a entrada para depois registrar o retorno para o almoço', 'Primeiro registre a saída para o almoço para depois registrar o retorno', 'O horário de saída já foi registrado e não é possível registrar o retorno do almoço', 'O horário de retorno para o almoço já foi registrado', 'O horário de saída do almoço não pode ser posterior ao horário de retorno', 'O horário de saída do almoço não pode ser igual ao horário de retorno'];
+          
+          Swal.fire({
+            icon: mensagensRetorno.includes(msg.retorno) ? 'warning' : 'error',
+            title: msg.retorno,
+            text: '',
+            showConfirmButton: true,
+          });
         } else {
           Swal.fire({
             icon: 'error',
@@ -472,7 +516,7 @@ window.registraRetornoAlmoco = ((event) => {
           console.log(msg);
         }
       })
-
+      
       .fail(function(erro){
         Swal.fire({
           icon: 'error',

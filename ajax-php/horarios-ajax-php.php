@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
         $dado = htmlentities(isset($_POST['dado']) ? $_POST['dado'] : '');
 
         $com = $HorariosController -> registrarHorario($id_usuario, $dia_semana, $hora_entrada, $hora_saida, $hora_saida_almoco, $hora_retorno_almoco, $dado);
-        $retorno['x'] = $com;
+        $retorno['retorno'] = $com;
         if($com){
           $retorno['mensagem'] = 'Horário registrado';
           $retorno['sucesso'] = true;

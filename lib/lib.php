@@ -51,7 +51,7 @@ function verificarValoresArmazenados(){
 
 function login($status){
   if(!$status){
-    die("<script type='module'>import { swalAlert } from '../assets/js/módulos/utilitarios.js'; swalAlert('error', 'error', 'Sessão inválida ou não definida', 'As informações não foram armazenadas corretamente ou estão inválidas. Você será redirecionado para o login', '8870SS', null).then(() => {setTimeout(()=>{window.location.href = '../login/'}, 4000)});</script>");
+    die("<script type='module'>import { swalAlert } from '../assets/js/módulos/utilitarios.js'; swalAlert('error', 'error', 'Sessão inválida ou não definida', 'As informações não foram armazenadas corretamente ou estão inválidas. Você será redirecionado para o login', '8870SS', null).then(() => {setTimeout(()=>{window.location.href = '../login/'}, 2000)});</script>");
   }
 }
 
