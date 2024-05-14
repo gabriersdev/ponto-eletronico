@@ -7,7 +7,12 @@
 
   *:not(.alert){
     border-radius: 0 !important;
+    border: unset;
     background: unset !important;
+  }
+
+  main.principal{
+    min-height: initial;
   }
 
   .container{
@@ -58,6 +63,11 @@
     counter-increment: counter-reg-table;
   }
 
+  [data-tabela="ultimos-registros"] th, 
+  [data-tabela="ultimos-registros"] td{
+    border: 1px solid rgba(0, 0, 0, 0.25);
+  }
+
   .btn{
     display: none !important;
   }
@@ -73,6 +83,10 @@
   }
 
   .input-group-text{
+    display: none !important;
+  }
+
+  footer .col-6{
     display: none !important;
   }
 }
