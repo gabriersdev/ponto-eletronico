@@ -59,7 +59,7 @@ import { credentialError, accessAut, accessWarning } from '../módulos/feedback.
         })
         
         .fail(function(erro){
-          credentialError(true, 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000CI')
+          credentialError(true, 'Ocorreu um erro no recebimento das informações', 'Por favor, contacte o administrador do sistema', 'Erro: 0000FI')
         })
         
         .always(function() {
