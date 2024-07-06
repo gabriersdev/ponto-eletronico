@@ -10,7 +10,7 @@ import { conteudos } from "../módulos/conteudos.js";
     const dia = verificarODia(data);
     if(!isEmpty(dia)){
       componente.querySelector('.text-primary').textContent = capitalize(dia);
-      componente.querySelector('.text-dark-emphasis').textContent = `${data.get('date')} de ${converterParaMesBRL(data.get('month'))} de ${data.get('year')}`;
+      componente.querySelector('.text-dark-emphasis').textContent = `${('0' + data.get('date')).slice(-2)} de ${converterParaMesBRL(data.get('month'))} de ${data.get('year')}`;
     }
   }
   
@@ -255,12 +255,12 @@ window.carregarHorariosRegistradosHoje = (() => {
                 if (saida_almoco) saida_almoco.trim().length > 0 ? document.querySelector('#registrar-saida-almoco').setAttribute('disabled', 'true') : '';
                 if (retorno_almoco) retorno_almoco.trim().length > 0 ? document.querySelector('#registrar-retorno-almoco').setAttribute('disabled', 'true') : '';
               } catch (error) { }
-            }, 1000);
 
-            $('#hr-entrada').html(!isEmpty(element.hora_entrada_usuario_horario) ? `&nbsp;${formatarApresentacao(element.hora_entrada_usuario_horario)}` : '&nbsp;-');
-            $('#hr-saida').html(!isEmpty(element.hora_saida_usuario_horario) ? `&nbsp;${formatarApresentacao(element.hora_saida_usuario_horario)}` : '&nbsp;-');
-            $('#hr-saida-almoco').html(!isEmpty(element.hora_saida_usuario_almoco) ? `&nbsp;${formatarApresentacao(element.hora_saida_usuario_almoco)}` : '&nbsp;-');
-            $('#hr-retorno-almoco').html(!isEmpty(element.hora_retorno_usuario_almoco) ? `&nbsp;${formatarApresentacao(element.hora_retorno_usuario_almoco)}` : '&nbsp;-');
+              $('#hr-entrada').html(!isEmpty(element.hora_entrada_usuario_horario) ? `&nbsp;${formatarApresentacao(element.hora_entrada_usuario_horario)}` : '&nbsp;-');
+              $('#hr-saida').html(!isEmpty(element.hora_saida_usuario_horario) ? `&nbsp;${formatarApresentacao(element.hora_saida_usuario_horario)}` : '&nbsp;-');
+              $('#hr-saida-almoco').html(!isEmpty(element.hora_saida_usuario_almoco) ? `&nbsp;${formatarApresentacao(element.hora_saida_usuario_almoco)}` : '&nbsp;-');
+              $('#hr-retorno-almoco').html(!isEmpty(element.hora_retorno_usuario_almoco) ? `&nbsp;${formatarApresentacao(element.hora_retorno_usuario_almoco)}` : '&nbsp;-');
+            });
           })
         } else {
           // Não há horários registrados para hoje
