@@ -5,6 +5,8 @@ Ponto eletrônico é um sistema de registro de horários de trabalho e de almoç
 > [!NOTE]
 > A implementação desse projeto foi desenvolvida apenas para a utilização por usuário. Para múltiplos acessos há a necessidade de alterar algumas linhas de código.
 
+![Demonstração da tela inicial do Ponto Eletrônico](view/assets/img/exemplo.png)
+
 ## Requisitos
 
 - [X] Fazer login de usuário
@@ -29,3 +31,4 @@ _ [X] Bloqueia o registro de horários quando a alteração da entrada for poste
 - Ajax
 - Bootstrap, Moment.js e JQuery
 - HTML, CSS, JS
+- SQL, PhpMyAdmin, HeidiSQL e MySQL Workbench
