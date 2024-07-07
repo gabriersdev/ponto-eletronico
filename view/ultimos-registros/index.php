@@ -94,6 +94,8 @@
                       <th scope="col">Data</th>
                       <th scope="col">Entrada</th>
                       <th scope="col">Saída</th>
+                      <th scope="col">Saída almoço</th>
+                      <th scope="col">Retorno almoço</th>
                       <th scope="col">Tempo</th>
                     </tr>
                   </thead>
