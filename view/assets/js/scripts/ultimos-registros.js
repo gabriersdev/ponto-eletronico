@@ -75,7 +75,7 @@ import { verificarODia, retornarUltimosRegistros } from '../script.js';
     })
   }
   
-  if (window.location.pathname === '/projetos/ponto-eletronico/view/ultimos-registros/' || window.location.pathname === '/view/ultimos-registros/') {
+  if (window.location.pathname === '/projetos/ponto-eletronico/view/ultimos-registros/' || window.location.pathname === '/view/ultimos-registros/' || window.location.pathname === "/ponto-eletronico/view/ultimos-registros/") {
     $(document).ready(function(){
       retornarUltimosRegistros(10);
       escutarSubmitFormularioFiltroRegistros();
